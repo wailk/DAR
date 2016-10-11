@@ -7,8 +7,19 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>dar.projet.web Maven Webapp</name>
 	<url>http://maven.apache.org</url>
-	<dependencies>
 
+	<properties>
+		<jdk.version>1.8</jdk.version>
+		<jstl.version>1.2</jstl.version>
+		<junit.version>4.11</junit.version>
+		<logback.version>1.0.13</logback.version>
+		<jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
+		<!-- Hibernate / JPA -->
+		<hibernate.version>5.2.2.Final</hibernate.version>
+		<!-- database -->
+		<h2.version>1.4.192</h2.version>
+	</properties>
+	<dependencies>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
@@ -18,11 +29,36 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>3.8.1</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- Persistence -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${h2.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
 		<finalName>dar.projet.web</finalName>
+		<plugins>
+			<!-- Set JDK Compiler Level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+		</plugins>
 	</build>
 </project>
