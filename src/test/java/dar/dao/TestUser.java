@@ -27,8 +27,10 @@ public class TestUser {
 		session.beginTransaction();
 		
 		String hsq = "from User as t";
-		List<User> tbs =  session.createQuery(hsq).list();
-		System.out.println(tbs);
+		User user1 = new User("mootez","hichri","hichri@gmail.com","0602","mdp");
+		session.save(user1);
+		//List<User> tbs =  session.createQuery(hsq).list();
+		//System.out.println(tbs);
 		
 		session.getTransaction().commit();
 		session.close();

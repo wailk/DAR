@@ -1,0 +1,608 @@
+10-13 14:04:57 database: close
+org.h2.message.DbException: IO Exception: "java.io.EOFException"; "C:/Users/HICHRI/git/DAR/src/main/resources/mydb.h2.db" [90031-176]
+	at org.h2.message.DbException.get(DbException.java:167)
+	at org.h2.message.DbException.convertIOException(DbException.java:329)
+	at org.h2.store.FileStore.readFully(FileStore.java:276)
+	at org.h2.store.PageStore.readPage(PageStore.java:1326)
+	at org.h2.store.PageStore.getPage(PageStore.java:750)
+	at org.h2.store.PageStreamTrunk$Iterator.next(PageStreamTrunk.java:252)
+	at org.h2.store.PageLog.free(PageLog.java:214)
+	at org.h2.store.PageStore.compact(PageStore.java:499)
+	at org.h2.engine.Database.closeOpenFilesAndUnlock(Database.java:1301)
+	at org.h2.engine.Database.close(Database.java:1251)
+	at org.h2.engine.Database.removeSession(Database.java:1122)
+	at org.h2.engine.Session.close(Session.java:672)
+	at org.h2.jdbc.JdbcConnection.close(JdbcConnection.java:383)
+	at org.h2.server.web.WebApp.logout(WebApp.java:984)
+	at org.h2.server.web.WebApp.process(WebApp.java:216)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:171)
+	at org.h2.server.web.WebThread.process(WebThread.java:138)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.h2.jdbc.JdbcSQLException: IO Exception: "java.io.EOFException"; "C:/Users/HICHRI/git/DAR/src/main/resources/mydb.h2.db" [90031-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	... 19 more
+Caused by: java.io.EOFException
+	at org.h2.store.fs.FileUtils.readFully(FileUtils.java:347)
+	at org.h2.store.FileStore.readFully(FileStore.java:274)
+	... 16 more
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "USER_ID_IDX"; SQL statement:
+CREATE TABLE `appartments` (
+  `id_appartment` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `adresse` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `superficie` varchar(45) NOT NULL,
+  `meuble` bit(1) NOT NULL,
+  `nbr_piece` int(11) NOT NULL,
+  `loyer` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id_appartment`),
+  KEY `user_id_idx` (`id_user`),
+  CONSTRAINT `user_id` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='table des appartement' [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                       
+  
+
+LOCK[*] TABLES ""APPARTMENTS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `appartments`
+--
+
+LOCK TABLES `appartments` WRITE [42000-176]
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ID_APPARTMENT_IDX"; SQL statement:
+CREATE TABLE `photos` (
+  `id_photo` int(11) NOT NULL,
+  `id_appartement` int(11) NOT NULL,
+  `chemin` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_photo`),
+  KEY `id_appartment_idx` (`id_appartement`),
+  CONSTRAINT `id_appartment` FOREIGN KEY (`id_appartement`) REFERENCES `appartments` (`id_appartment`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                  
+  
+
+LOCK[*] TABLES ""PHOTOS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE [42000-176]
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                 
+  
+
+LOCK[*] TABLES ""USERS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE [42000-176]
+10-13 14:16:18 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:17:04 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "USER_ID_IDX"; SQL statement:
+CREATE TABLE `appartments` (
+  `id_appartment` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `adresse` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `superficie` varchar(45) NOT NULL,
+  `meuble` bit(1) NOT NULL,
+  `nbr_piece` int(11) NOT NULL,
+  `loyer` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id_appartment`),
+  KEY `user_id_idx` (`id_user`),
+  CONSTRAINT `user_id` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='table des appartement' [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:17:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                       
+  
+
+LOCK[*] TABLES ""APPARTMENTS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `appartments`
+--
+
+LOCK TABLES `appartments` WRITE [42000-176]
+10-13 14:17:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:17:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ID_APPARTMENT_IDX"; SQL statement:
+CREATE TABLE `photos` (
+  `id_photo` int(11) NOT NULL,
+  `id_appartement` int(11) NOT NULL,
+  `chemin` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_photo`),
+  KEY `id_appartment_idx` (`id_appartement`),
+  CONSTRAINT `id_appartment` FOREIGN KEY (`id_appartement`) REFERENCES `appartments` (`id_appartment`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:17:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                  
+  
+
+LOCK[*] TABLES ""PHOTOS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE [42000-176]
+10-13 14:17:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:17:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                 
+  
+
+LOCK[*] TABLES ""USERS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE [42000-176]
+10-13 14:17:05 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "USER_ID_IDX"; SQL statement:
+CREATE TABLE `appartments` (
+  `id_appartment` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `adresse` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `superficie` varchar(45) NOT NULL,
+  `meuble` bit(1) NOT NULL,
+  `nbr_piece` int(11) NOT NULL,
+  `loyer` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id_appartment`),
+  KEY `user_id_idx` (`id_user`),
+  CONSTRAINT `user_id` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='table des appartement' [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                       
+  
+
+LOCK[*] TABLES ""APPARTMENTS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `appartments`
+--
+
+LOCK TABLES `appartments` WRITE [42000-176]
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ID_APPARTMENT_IDX"; SQL statement:
+CREATE TABLE `photos` (
+  `id_photo` int(11) NOT NULL,
+  `id_appartement` int(11) NOT NULL,
+  `chemin` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_photo`),
+  KEY `id_appartment_idx` (`id_appartement`),
+  CONSTRAINT `id_appartment` FOREIGN KEY (`id_appartement`) REFERENCES `appartments` (`id_appartment`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                  
+  
+
+LOCK[*] TABLES ""PHOTOS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE [42000-176]
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                 
+  
+
+LOCK[*] TABLES ""USERS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `users`
+--
+
+LOCK TABLES `users` WRITE [42000-176]
+10-13 14:17:08 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:18:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "USER_ID_IDX"; SQL statement:
+CREATE TABLE `appartments` (
+  `id_appartment` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `adresse` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `superficie` varchar(45) NOT NULL,
+  `meuble` bit(1) NOT NULL,
+  `nbr_piece` int(11) NOT NULL,
+  `loyer` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id_appartment`),
+  KEY `user_id_idx` (`id_user`),
+  CONSTRAINT `user_id` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='table des appartement' [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:18:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                       
+  
+
+LOCK[*] TABLES ""APPARTMENTS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `appartments`
+--
+
+LOCK TABLES `appartments` WRITE [42000-176]
+10-13 14:18:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:18:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ID_APPARTMENT_IDX"; SQL statement:
+CREATE TABLE `photos` (
+  `id_photo` int(11) NOT NULL,
+  `id_appartement` int(11) NOT NULL,
+  `chemin` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_photo`),
+  KEY `id_appartment_idx` (`id_appartement`),
+  CONSTRAINT `id_appartment` FOREIGN KEY (`id_appartement`) REFERENCES `appartments` (`id_appartment`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:18:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "  
+                                  
+  
+
+LOCK[*] TABLES ""PHOTOS"" WRITE "; SQL statement:
+--
+-- Dumping data for table `photos`
+--
+
+LOCK TABLES `photos` WRITE [42000-176]
+10-13 14:18:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "UNLOCK[*] TABLES"; expected "UPDATE, {"; SQL statement:
+UNLOCK TABLES [42001-176]
+10-13 14:19:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "USER_ID_IDX"; SQL statement:
+CREATE TABLE `appartments` (
+  `id_appartment` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `adresse` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `superficie` varchar(45) NOT NULL,
+  `meuble` bit(1) NOT NULL,
+  `nbr_piece` int(11) NOT NULL,
+  `loyer` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id_appartment`),
+  KEY `user_id_idx` (`id_user`),
+  CONSTRAINT `user_id` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='table des appartement' [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:19:45 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ID_APPARTMENT_IDX"; SQL statement:
+CREATE TABLE `photos` (
+  `id_photo` int(11) NOT NULL,
+  `id_appartement` int(11) NOT NULL,
+  `chemin` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_photo`),
+  KEY `id_appartment_idx` (`id_appartement`),
+  CONSTRAINT `id_appartment` FOREIGN KEY (`id_appartement`) REFERENCES `appartments` (`id_appartment`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:20:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "USER_ID_IDX"; SQL statement:
+CREATE TABLE `appartments` (
+  `id_appartment` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `adresse` varchar(45) NOT NULL,
+  `type` varchar(45) NOT NULL,
+  `superficie` varchar(45) NOT NULL,
+  `meuble` bit(1) NOT NULL,
+  `nbr_piece` int(11) NOT NULL,
+  `loyer` decimal(5,2) NOT NULL,
+  PRIMARY KEY (`id_appartment`),
+  KEY `user_id_idx` (`id_user`),
+  CONSTRAINT `user_id` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='table des appartement' [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
+10-13 14:20:03 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Unknown data type: "ID_APPARTMENT_IDX"; SQL statement:
+CREATE TABLE `photos` (
+  `id_photo` int(11) NOT NULL,
+  `id_appartement` int(11) NOT NULL,
+  `chemin` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_photo`),
+  KEY `id_appartment_idx` (`id_appartement`),
+  CONSTRAINT `id_appartment` FOREIGN KEY (`id_appartement`) REFERENCES `appartments` (`id_appartment`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 [50004-176]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:344)
+	at org.h2.message.DbException.get(DbException.java:178)
+	at org.h2.message.DbException.get(DbException.java:154)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:3963)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:3826)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:5723)
+	at org.h2.command.Parser.parseCreate(Parser.java:4122)
+	at org.h2.command.Parser.parsePrepared(Parser.java:351)
+	at org.h2.command.Parser.parse(Parser.java:306)
+	at org.h2.command.Parser.parse(Parser.java:278)
+	at org.h2.command.Parser.prepareCommand(Parser.java:243)
+	at org.h2.engine.Session.prepareLocal(Session.java:442)
+	at org.h2.engine.Session.prepareCommand(Session.java:384)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1188)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:172)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:160)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1391)
+	at org.h2.server.web.WebApp.query(WebApp.java:1064)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1026)
+	at org.h2.server.web.WebApp$1.next(WebApp.java:1013)
+	at org.h2.server.web.WebThread.process(WebThread.java:168)
+	at org.h2.server.web.WebThread.run(WebThread.java:94)
+	at java.lang.Thread.run(Unknown Source)
