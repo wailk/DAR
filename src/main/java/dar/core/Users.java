@@ -1,36 +1,63 @@
 package dar.core;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "users")
-public class User {
-	@Id()
-	@GeneratedValue
+public class Users implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id() 
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	
 	private int id_user;
 
 	@Column(name = "name", length = 45)
 	private String name;
-
+	@Column(name = "firstname", length = 45)
 	private String firstname;
+	@Column(name = "email", length = 45)
 	private String email;
-
+	@Column(name = "telephone", length = 45)
 	private String telephone;
+	@Column(name = "mdp", length = 45)
 	private String mdp;
 
-	public User() {
+//	@OneToMany(cascade=CascadeType.ALL)
+//	@JoinColumn(name="appart_id")
+	private ArrayList<Appartements> appartemens ; 
+	
+	public ArrayList<Appartements> getAppartemens() {
+		return appartemens;
 	}
 
-	public User(String name) {
+	public void setAppartemens(ArrayList<Appartements> appartemens) {
+		this.appartemens = appartemens;
+	}
+
+	public Users() {
+	}
+
+	public Users(String name) {
 		this.name = name;
 	}
 	
 
-	public User(String name, String firstname, String email, String telephone, String mdp) {
+	public Users(String name, String firstname, String email, String telephone, String mdp) {
 		super();
 		this.name = name;
 		this.firstname = firstname;
