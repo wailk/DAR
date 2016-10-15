@@ -11,13 +11,9 @@
 	<properties>
 		<jdk.version>1.8</jdk.version>
 		<jstl.version>1.2</jstl.version>
-		<junit.version>4.11</junit.version>
+		<junit.version>4.12</junit.version>
 		<logback.version>1.0.13</logback.version>
 		<jcl-over-slf4j.version>1.7.5</jcl-over-slf4j.version>
-		<!-- Hibernate / JPA -->
-		<hibernate.version>5.2.2.Final</hibernate.version>
-		<!-- database -->
-		<h2.version>1.4.192</h2.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -26,30 +22,26 @@
 			<version>3.0.1</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>${junit.version}</version>
-			<scope>test</scope>
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/junit/junit -->
+	<dependency>
+    <groupId>junit</groupId>
+    <artifactId>junit</artifactId>
+    <version>4.12</version>
+</dependency>
 
 		<!-- Persistence -->
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-			<version>${hibernate.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>${h2.version}</version>
-		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
+<dependency>
+    <groupId>org.hibernate</groupId>
+    <artifactId>hibernate-core</artifactId>
+    <version>4.3.0.Final</version>
+</dependency>
+		
 
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.6</version>
+			<version>5.1.39</version>
 		</dependency>
 
 	</dependencies>
@@ -58,13 +50,12 @@
 		<plugins>
 			<!-- Set JDK Compiler Level -->
 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-				</configuration>
+			 <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.5.1</version>
+          <configuration>
+          <target>1.8</target>
+          <source>1.8</source></configuration>
 			</plugin>
 		</plugins>
 	</build>
