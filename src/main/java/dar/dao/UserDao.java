@@ -1,5 +1,14 @@
 package dar.dao;
 
-public class UserDao {
+import org.hibernate.SessionFactory;
+
+import dar.core.Users;
+
+public class UserDao extends CrudDao<Users>{
+
+	public UserDao(SessionFactory sf) {
+		super(sf);
+	}
+	
 
 }

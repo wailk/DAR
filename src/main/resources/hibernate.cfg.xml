@@ -8,11 +8,11 @@
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">1234</property>
+        <property name="hibernate.connection.password"></property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bd_immo</property>
  
  
-      	<property name="hibernate.hbm2ddl.auto">create</property>
+      	<!-- <property name="hibernate.hbm2ddl.auto">create</property> -->
  
         <!-- Echo all executed SQL to sysout -->
         <property name="show_sql">true</property>

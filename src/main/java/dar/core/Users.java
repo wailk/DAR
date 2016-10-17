@@ -116,6 +116,12 @@ public class Users implements Serializable {
 		this.id_user = id_user;
 	}
 
+	@Override
+	public String toString() {
+		return "Users [id_user=" + id_user + ", name=" + name + ", firstname=" + firstname + ", email=" + email
+				+ ", telephone=" + telephone + ", mdp=" + mdp + ", appartemens=" + appartemens + "]";
+	}
+
 
 
 }
