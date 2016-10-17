@@ -22,26 +22,26 @@ public class TestDao {
 		SessionFactory sf = HandleHibernate.getSF();
 		UserDao userDao = new UserDao(sf);
 		Users us1 = new Users();
-		dbProfilTools tool = new dbProfilTools();
-//		System.out.println(tool.getUser("ash.mootezgmail.com", "1234").getFirstname());
-//		System.out.println(userDao.getAll(Users.class));
+		// dbProfilTools tool = new dbProfilTools();
+		// System.out.println(tool.getUser("ash.mootezgmail.com",
+		// "1234").getFirstname());
+		// System.out.println(userDao.getAll(Users.class));
 		us1.setName("Hichri");
 		us1.setMdp("1234");
 		us1.setFirstname("ash");
 		us1.setEmail("ash.mootezgmail.com");
 		userDao.save(us1);
 
-		System.out.println(">>>>>>" + userDao.getElement(Users.class,1));
-//		
-//		
-//		
-//		//Session session = sf.openSession();
-//		
-//		List<Users> list_users =  (List<Users>)sf.createQuery("from Users where mdp = 1234 and email = 'ash.mootezgmail.com'").list() ;
-//		System.out.println(">>>>>>>>>>   "   +list_users.get(0).getFirstname());
-	sf.close();
+		System.out.println(">>>>>>" + userDao.getElement(Users.class, 1));
+		//
+		//
+		//
+		// //Session session = sf.openSession();
+		//
+		// List<Users> list_users = (List<Users>)sf.createQuery("from Users
+		// where mdp = 1234 and email = 'ash.mootezgmail.com'").list() ;
+		// System.out.println(">>>>>>>>>> " +list_users.get(0).getFirstname());
+		sf.close();
 	}
-	
-	
 
 }
