@@ -2,10 +2,13 @@ package dar.core;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,9 +32,9 @@ public class Appartements implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_appartement;
 
-//	@ManyToOne
-//	@ForeignKey(name="propri")
-	private Users user;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_user",referencedColumnName="id_user")
+	private Users id_user;
 	@Column(name = "adresse", length = 100)
 	private String adresse;
 	@Column(name = "type", length = 45)
@@ -43,11 +46,11 @@ public class Appartements implements Serializable {
 	@Column(name="loyer")
 	private double loyer ;
 	
-//	@OneToMany(cascade=CascadeType.ALL)
+	
 //	@JoinColumn(name="photo_id")
-	private ArrayList<Photos> photos ;
+	private ArrayList<Photos> photos =  new  ArrayList<Photos>() ;
 	
-	
+	//@OneToMany(cascade=CascadeType.ALL,mappedBy = "Appartements")
 	public ArrayList<Photos> getPhotos() {
 		return photos;
 	}
@@ -62,10 +65,10 @@ public class Appartements implements Serializable {
 	}
 	
 	public Users getUser() {
-		return user;
+		return id_user;
 	}
 	public void setUser(Users user) {
-		this.user = user;
+		this.id_user = user;
 	}
 	public String getAdresse() {
 		return adresse;

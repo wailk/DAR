@@ -1,15 +1,14 @@
 package dar.core;
 
 import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -37,16 +36,15 @@ public class Users implements Serializable {
 	@Column(name = "mdp", length = 45)
 	private String mdp;
 
-//	@OneToMany(cascade=CascadeType.ALL)
-//	@JoinColumn(name="appart_id")
-	private ArrayList<Appartements> appartemens ; 
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_user")
+	private Set<Appartements> appartements ; 
 	
-	public ArrayList<Appartements> getAppartemens() {
-		return appartemens;
+	public Set<Appartements> getAppartemens() {
+		return appartements;
 	}
 
-	public void setAppartemens(ArrayList<Appartements> appartemens) {
-		this.appartemens = appartemens;
+	public void setAppartemens(Set<Appartements> appartemens) {
+		this.appartements = appartemens;
 	}
 
 	public Users() {
@@ -119,7 +117,7 @@ public class Users implements Serializable {
 	@Override
 	public String toString() {
 		return "Users [id_user=" + id_user + ", name=" + name + ", firstname=" + firstname + ", email=" + email
-				+ ", telephone=" + telephone + ", mdp=" + mdp + ", appartemens=" + appartemens + "]";
+				+ ", telephone=" + telephone + ", mdp=" + mdp + ", appartemens=" + appartements + "]";
 	}
 
 

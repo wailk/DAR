@@ -19,7 +19,7 @@
 //		//Get Session
 //		//Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 //		//Get Session
-//		SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
+//		//SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
 //		Session session = sessionFactory.getCurrentSession();
 //		//start transaction
 //		session.beginTransaction();

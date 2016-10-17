@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import dar.core.Users;
+
 public class CrudDao<T> {
 
 	private SessionFactory sf;
@@ -34,8 +36,12 @@ public class CrudDao<T> {
 		session.close();
 	}
 
-	public List<T> getAll() {
-		return null;
+	public List<T> getAll(Class clazz) {
+		Session session = sf.openSession();
+		List<T> list = (List<T>) session
+				.createQuery("from " + clazz.getName()).list();
+		session.close();
+		return list;
 	}
 
 	public void save(T elem) {
@@ -44,6 +50,14 @@ public class CrudDao<T> {
 		session.save(elem);
 		tx.commit();
 		session.close();
+	}
+	public List<T> getFromQuery(String q){
+		Session session = sf.openSession();
+		List<T> list = (List<T>) session
+				.createQuery(q).list();
+		session.close();
+		return list;
+
 	}
 
 }
