@@ -8,17 +8,14 @@ import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
 
 import dar.core.Users;
+import dar.utils.HandleHibernate;
 
 public class TestDao {
 
 	@Test
 	public void testUser() {
-		Configuration cf = new Configuration().configure("hibernate.cfg.xml");
 
-		StandardServiceRegistryBuilder srb = new StandardServiceRegistryBuilder();
-		srb.applySettings(cf.getProperties());
-		ServiceRegistry sr = srb.build();
-		SessionFactory sf = cf.buildSessionFactory(sr);
+		SessionFactory sf = HandleHibernate.getSF();
 		UserDao userDao = new UserDao(sf);
 		Users us1 = new Users();
 		us1.setName("Hichri");
