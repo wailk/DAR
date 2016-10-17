@@ -31,6 +31,9 @@ public class Photos {
 		this.id_photo = id_photo;
 	}
 	
+	@SuppressWarnings("deprecation")
+	@ManyToOne
+	@ForeignKey(name="appart_id")
 	public Appartements getAppartement() {
 		return appartement;
 	}
