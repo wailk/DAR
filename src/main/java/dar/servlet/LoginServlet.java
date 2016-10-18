@@ -3,19 +3,20 @@ package dar.servlet;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dar.services.LoginForm;
+import dar.tools.R;
 
+@WebServlet("/cnx")
 public class LoginServlet extends HttpServlet {
 	String ATT_USER="newUser" ; 
 	String ATT_USER_SESSION="user"  ; 
 	String VUE="/jsp/cnx.jsp" ;
-	private static final String LOGIN = "login";
-	private static final String PSW = "password";
 	String PAGE_REDIRECT="home" ;
 	String PAGE_ERR_REDIRECT="/Login" ;
 	
@@ -33,13 +34,14 @@ public class LoginServlet extends HttpServlet {
 			
 		
 		if(LoginForm.valideForm(request, response)){
-			String login = request.getParameter(LOGIN);
-			String psw = request.getParameter(PSW); 
+			String login = request.getParameter(R.Connexion.LOGIN);
+			String psw = request.getParameter(R.Connexion.PASS); 
 			System.out.println("Connexion de "+ login);
 			
 			HttpSession session= request.getSession() ;
 			session.setAttribute(ATT_USER_SESSION, login);
 			response.sendRedirect(PAGE_REDIRECT);
+			//System.out.println("c bon utlisateur connecte");
 			return ; 
 		}else{
 			
@@ -48,6 +50,7 @@ public class LoginServlet extends HttpServlet {
 		}
 		}catch(Exception e){
 			e.printStackTrace();
+			System.out.println("exception");
 			response.sendRedirect(PAGE_ERR_REDIRECT);
 			
 		}

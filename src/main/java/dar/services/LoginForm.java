@@ -5,14 +5,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import dar.core.Users;
 import dar.tools.FormTools;
+import dar.tools.R;
 import dar.utils.dbProfilTools;
 
 public class LoginForm {
 	public static boolean valideForm(HttpServletRequest request, HttpServletResponse response){
 
 
-		String pseudo = request.getParameter("pseudo"); 
-		String pass=request.getParameter("pass") ;
+		String pseudo = request.getParameter(R.Connexion.LOGIN); 
+		String pass=request.getParameter(R.Connexion.PASS) ;
 
 
 		Users newUser=null ;
@@ -20,7 +21,7 @@ public class LoginForm {
 		try{
 			form.validationNom(pseudo);
 			form.validationNom(pass);
-			//récupérer l'utilisateur de la base de donnée
+			//rï¿½cupï¿½rer l'utilisateur de la base de donnï¿½e
 			System.out.println("pseudo "+pseudo);
 			System.out.println("pass "+pass);
 			
