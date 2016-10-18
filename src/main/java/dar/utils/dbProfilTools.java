@@ -21,6 +21,16 @@ public class dbProfilTools {
 	}
 	
 	
+	
+	public static void addUser(Users user){
+		SessionFactory sf = HandleHibernate.getSF();
+		UserDao userDao = new UserDao(sf);
+		userDao.save(user);
+		
+		
+	}
+	
+	
 		public static void deleteUser(int id_profil){
 			
 

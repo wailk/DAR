@@ -42,6 +42,10 @@ public class Users implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id_user")
 	@Expose private Set<Appartements> appartements;
 
+	
+	
+	
+	
 	public Set<Appartements> getAppartemens() {
 		return appartements;
 	}
