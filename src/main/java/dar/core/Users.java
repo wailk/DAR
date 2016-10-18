@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.google.gson.annotations.Expose;
+
 @Entity
 @Table(name = "users")
 public class Users implements Serializable {
@@ -20,25 +22,26 @@ public class Users implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@Id() 
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	
+	@Id()
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
 	private int id_user;
 
 	@Column(name = "name", length = 45)
-	private String name;
+	@Expose private String name;
 	@Column(name = "firstname", length = 45)
-	private String firstname;
+	@Expose private String firstname;
 	@Column(name = "email", length = 45)
-	private String email;
+	@Expose private String email;
 	@Column(name = "telephone", length = 45)
-	private String telephone;
+	@Expose private String telephone;
 	@Column(name = "mdp", length = 45)
+	@Expose(serialize = false)
 	private String mdp;
 
-	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_user")
-	private Set<Appartements> appartements ; 
-	
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id_user")
+	@Expose private Set<Appartements> appartements;
+
 	public Set<Appartements> getAppartemens() {
 		return appartements;
 	}
@@ -53,7 +56,6 @@ public class Users implements Serializable {
 	public Users(String name) {
 		this.name = name;
 	}
-	
 
 	public Users(String name, String firstname, String email, String telephone, String mdp) {
 		super();
@@ -64,7 +66,6 @@ public class Users implements Serializable {
 		this.mdp = mdp;
 	}
 
-	
 	public String getName() {
 		return name;
 	}
@@ -73,7 +74,6 @@ public class Users implements Serializable {
 		this.name = name;
 	}
 
-	
 	public String getFirstname() {
 		return firstname;
 	}
@@ -119,7 +119,5 @@ public class Users implements Serializable {
 		return "Users [id_user=" + id_user + ", name=" + name + ", firstname=" + firstname + ", email=" + email
 				+ ", telephone=" + telephone + ", mdp=" + mdp + ", appartemens=" + appartements + "]";
 	}
-
-
 
 }

@@ -19,6 +19,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.ForeignKey;
 
+import com.google.gson.annotations.Expose;
+
 
 @Entity
 @Table(name = "Appartements")
