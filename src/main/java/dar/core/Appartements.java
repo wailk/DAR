@@ -47,14 +47,14 @@ public class Appartements implements Serializable {
 	private double loyer ;
 	
 	
-//	@JoinColumn(name="photo_id")
-	private ArrayList<Photos> photos =  new  ArrayList<Photos>() ;
+	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_appartement")
+	private Set<Photos> photos ;
 	
-	//@OneToMany(cascade=CascadeType.ALL,mappedBy = "Appartements")
-	public ArrayList<Photos> getPhotos() {
+	
+	public Set<Photos> getPhotos() {
 		return photos;
 	}
-	public void setPhotos(ArrayList<Photos> photos) {
+	public void setPhotos(Set<Photos> photos) {
 		this.photos = photos;
 	}
 	public int getId_appartement() {

@@ -2,6 +2,7 @@ package dar.core;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,9 @@ public class Photos {
 
 //	@ManyToOne
 //	@ForeignKey(name="appart_id")
-	private Appartements appartement;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_appartement",referencedColumnName="id_appartement")
+	private Appartements id_appartement;
 	@Column(name = "chemin", length = 100)
 	private String chemin;
 	public int getId_photo() {
@@ -31,14 +34,12 @@ public class Photos {
 		this.id_photo = id_photo;
 	}
 	
-	@SuppressWarnings("deprecation")
-	@ManyToOne
-	@ForeignKey(name="appart_id")
+	
 	public Appartements getAppartement() {
-		return appartement;
+		return id_appartement;
 	}
 	public void setAppartement(Appartements appartement) {
-		this.appartement = appartement;
+		this.id_appartement = appartement;
 	}
 	public String getChemin() {
 		return chemin;
