@@ -36,17 +36,17 @@ public class Appartements implements Serializable {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user",referencedColumnName="id_user")
-	private Users id_user;
+	@Expose private Users id_user;
 	@Column(name = "adresse", length = 100)
-	private String adresse;
+	@Expose private String adresse;
 	@Column(name = "type", length = 45)
-	private String type;
+	@Expose private String type;
 	@Column(name = "superficie", length = 45)
-	private String superficie;
+	@Expose private String superficie;
 	@Column(name = "meuble")
-	private boolean meuble;
+	@Expose private boolean meuble;
 	@Column(name="loyer")
-	private double loyer ;
+	@Expose private double loyer ;
 	
 	
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_appartement")
@@ -101,6 +101,13 @@ public class Appartements implements Serializable {
 	}
 	public void setLoyer(double loyer) {
 		this.loyer = loyer;
+	}
+	
+	@Override
+	public String toString() {
+		return "Appartements [id_appartement=" + id_appartement + ", id_user=" + id_user + ", adresse=" + adresse
+				+ ", type=" + type + ", superficie=" + superficie + ", meuble=" + meuble + ", loyer=" + loyer
+				+ ", photos=" + photos + "]";
 	}
 	
 	

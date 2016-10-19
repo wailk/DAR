@@ -1,6 +1,7 @@
 package dar.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -38,8 +39,7 @@ public class CrudDao<T> {
 
 	public List<T> getAll(Class clazz) {
 		Session session = sf.openSession();
-		List<T> list = (List<T>) session
-				.createQuery("from " + clazz.getName()).list();
+		List<T> list = (List<T>) session.createQuery("from " + clazz.getName()).list();
 		session.close();
 		return list;
 	}
@@ -51,13 +51,29 @@ public class CrudDao<T> {
 		tx.commit();
 		session.close();
 	}
-	public List<T> getFromQuery(String q){
+
+	public List<T> getFromQuery(String q) {
 		Session session = sf.openSession();
-		List<T> list = (List<T>) session
-				.createQuery(q).list();
+		List<T> list = (List<T>) session.createQuery(q).list();
 		session.close();
 		return list;
 
+	}
+
+	public List<T> getFromQuery(Class clazz, Map<String, String> map) {
+		Session session = sf.openSession();
+		String q = new String("from " + clazz.getName() + "where ");
+		String closeWhere = "";
+		for (Map.Entry<String, String> m : map.entrySet()) {
+			closeWhere += "and ";
+			closeWhere += m.getKey() + " = " + m.getValue();
+		}
+		
+		q =  q + closeWhere.substring("and ".length());
+		
+		List<T> list = (List<T>) session.createQuery(q).list();
+		session.close();
+		return list;
 	}
 
 }
