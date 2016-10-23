@@ -15,23 +15,23 @@
 //		us1.setName("Hichri");
 //		us1.setFirstname("Mootez");
 //		us1.setEmail("hichri.mootezgmail.com");
-//		
-//		//Get Session
-//		//Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-//		//Get Session
-//		//SessionFactory sessionFactory = HibernateUtil.getSessionAnnotationFactory();
+//
+//		// Get Session
+//		// Session session =
+//		// HibernateUtil.getSessionFactory().getCurrentSession();
+//		// Get Session
+//		// SessionFactory sessionFactory =
+//		// HibernateUtil.getSessionAnnotationFactory();
 //		Session session = sessionFactory.getCurrentSession();
-//		//start transaction
+//		// start transaction
 //		session.beginTransaction();
-//		//Save the Model object
+//		// Save the Model object
 //		session.save(us1);
-//		//Commit transaction
+//		// Commit transaction
 //		session.getTransaction().commit();
-//		System.out.println("Employee ID="+us1.getId_user());
-//		
-//		//terminate session factory, otherwise program won't end
+//		System.out.println("Employee ID=" + us1.getId_user());
+//
+//		// terminate session factory, otherwise program won't end
 //		sessionFactory.close();
 //	}
-//	}
-//
-//
+//}

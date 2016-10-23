@@ -28,24 +28,25 @@ public class Users implements Serializable {
 	private int id_user;
 
 	@Column(name = "name", length = 45)
-	@Expose private String name;
+	@Expose
+	private String name;
 	@Column(name = "firstname", length = 45)
-	@Expose private String firstname;
+	@Expose
+	private String firstname;
 	@Column(name = "email", length = 45)
-	@Expose private String email;
+	@Expose
+	private String email;
 	@Column(name = "telephone", length = 45)
-	@Expose private String telephone;
+	@Expose
+	private String telephone;
 	@Column(name = "mdp", length = 45)
 	@Expose(serialize = false)
 	private String mdp;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id_user")
-	@Expose private Set<Appartements> appartements;
+	@Expose
+	private Set<Appartements> appartements;
 
-	
-	
-	
-	
 	public Set<Appartements> getAppartemens() {
 		return appartements;
 	}
@@ -121,7 +122,8 @@ public class Users implements Serializable {
 	@Override
 	public String toString() {
 		return "Users [id_user=" + id_user + ", name=" + name + ", firstname=" + firstname + ", email=" + email
-				+ ", telephone=" + telephone + ", mdp=" + mdp + ", appartemens=" + appartements + "]";
+				+ ", telephone=" + telephone + ", mdp=" + mdp + ", appartemens=" + 
+				(appartements == null ? "0" : appartements.size()) + "]";
 	}
 
 }

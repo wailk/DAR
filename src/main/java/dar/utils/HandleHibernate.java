@@ -33,4 +33,11 @@ public class HandleHibernate {
 		return sf;
 	}
 
+	public static void close() {
+		if (sf != null) {
+			sf.close();
+			sf = null;
+		}
+	}
+
 }

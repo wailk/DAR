@@ -1,4 +1,8 @@
+select * from appartements;
 
+select * from users;
+
+select * from photos;
 
 -- reset all users , Appartements, Photos for tests 
 -- users 
@@ -14,16 +18,22 @@ INSERT INTO users(name, firstname, email, telephone, mdp)
 VALUES ('root', 'root', 'root@gamil.com', '0612345612', 'root' );
 
 -- Appartements
-INSERT INTO Appartements(name, id_user,adresse, type, superficie, meuble, loyer)  
-VALUES ('app1', 1, '3 bd voltaire 75010 paris', 'F4', '200 m2', true, 750,5 );
-INSERT INTO Appartements(name, id_user,adresse, type, superficie, meuble, loyer)  
-VALUES ('app2', 2, '3 bd voltaire 75010 paris', 'F4', '200 m2', true, 750,5 );
-INSERT INTO Appartements(name, id_user,adresse, type, superficie, meuble, loyer)  
-VALUES ('app3', 2, '3 bd voltaire 75010 paris', 'F4', '200 m2', true, 750,5 );
-INSERT INTO Appartements(name, id_user,adresse, type, superficie, meuble, loyer)  
-VALUES ('app4', 2, '3 bd voltaire 75010 paris', 'F4', '200 m2', true, 750,5 );
 
---Photos
+INSERT INTO `bd_immo`.`appartements`
+(`adresse`,`loyer`,`meuble`,`superficie`,`type`,`id_user`)
+VALUES('3 bd voltaire 75010 paris',1000,true,'200','F4',1);
+INSERT INTO `bd_immo`.`appartements`
+(`adresse`,`loyer`,`meuble`,`superficie`,`type`,`id_user`)
+VALUES('3 bd voltaire 75010 paris',1000,true,'200','F4',2);
+INSERT INTO `bd_immo`.`appartements`
+(`adresse`,`loyer`,`meuble`,`superficie`,`type`,`id_user`)
+VALUES('3 bd voltaire 75010 paris',1000,true,'200','F4',2);
+INSERT INTO `bd_immo`.`appartements`
+(`adresse`,`loyer`,`meuble`,`superficie`,`type`,`id_user`)
+VALUES('3 bd voltaire 75010 paris',1000,true,'200','F4',1);
+
+
+-- Photos
 INSERT INTO Photos(id_appartement, chemin)
 VALUES(1, "test/chemin/photo1");
 INSERT INTO Photos(id_appartement, chemin)

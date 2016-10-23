@@ -2,6 +2,8 @@ package dar.json;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.stat.spi.StatisticsImplementor;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.google.gson.Gson;
@@ -12,14 +14,22 @@ import dar.dao.UserDao;
 import dar.utils.HandleHibernate;
 
 public class TestJson {
+	static SessionFactory sf= null;
+	@BeforeClass
+	public static void setUpBeforeClass() throws Exception {
+		sf = HandleHibernate.getSF();
+	}
+
+	@AfterClass
+	public static void tearDownAfterClass() throws Exception {
+		HandleHibernate.close();
+	}
 
 	@Test
 	public void testJavaToJson() {
-		SessionFactory sf = HandleHibernate.getSF();
+		
 		UserDao userDao = new UserDao(sf);
 		Users user = userDao.getElement(Users.class, 1);
-		sf.close();
-
 		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		System.out.println("Json >>>>>>>>" + gson.toJson(user));
 	}

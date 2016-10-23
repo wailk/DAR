@@ -3,11 +3,10 @@ package dar.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-
-import dar.core.Users;
 
 public class CrudDao<T> {
 
@@ -62,13 +61,13 @@ public class CrudDao<T> {
 
 	public List<T> getFromQuery(Class clazz, Map<String, String> map) {
 		Session session = sf.openSession();
-		String q = new String("from " + clazz.getName() + "where ");
+		String q = new String("from " + clazz.getName() + " where ");
 		String closeWhere = "";
 		for (Map.Entry<String, String> m : map.entrySet()) {
 			closeWhere += "and ";
-			closeWhere += m.getKey() + " = " + m.getValue();
+			closeWhere += m.getKey() + " = '" + m.getValue() +"'";
 		}
-		
+	
 		q =  q + closeWhere.substring("and ".length());
 		
 		List<T> list = (List<T>) session.createQuery(q).list();
