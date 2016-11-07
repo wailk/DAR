@@ -1,6 +1,8 @@
 package dar.servlet;
 
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,7 +21,15 @@ public class Test extends HttpServlet {
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// Get parameters
-		resp.setContentType("text/html");		
-		resp.getWriter().print("My name is : " + req.getParameter("name"));
+		String longitude = req.getParameter("longitude");
+		String laltitude = req.getParameter("laltitude");
+	
+		String url ="http://data.iledefrance.fr/api/records/1.0/search?geofilter.distance="+laltitude+","+longitude+",distance";
+		HttpURLConnection con = (HttpURLConnection) new URL(url).openConnection();
+		con.setRequestMethod("GET");
+		con.getOutputStream().write("LOGIN".getBytes("UTF-8"));
+		con.getInputStream();
+		
+		
 	}
 }
