@@ -7,15 +7,19 @@
 <session-factory>
         <!-- Database connection settings -->
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.username">root</property>
-        <property name="hibernate.connection.password">1234</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bd_immo</property>
+        <property name="hibernate.connection.url">jdbc:mysql://bdcartimmo.ckxwh1hda8jq.us-east-1.rds.amazonaws.com:3306/cartimmobd</property>
  
+        <property name="hibernate.connection.username">cartimmo</property>
+        <property name="hibernate.connection.password">cartimmo</property>
+        <property name="hibernate.connection.pool_size">10</property>
+        
  
       	<property name="hibernate.hbm2ddl.auto">update</property>
  
         <!-- Echo all executed SQL to sysout -->
         <property name="show_sql">true</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.current_session_context_class">thread</property>
  
  
         <!-- Map Entity Class -->
