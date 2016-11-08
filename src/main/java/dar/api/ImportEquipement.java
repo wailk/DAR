@@ -24,12 +24,12 @@ public class ImportEquipement {
 			 JSONObject fields  = (JSONObject) records.getJSONObject(i).get("fields");
 			 JSONArray geo_shape =  (JSONArray) ((JSONObject) fields.get("geo_shape")).get("coordinates");
 			 String name = fields.getString("ins_nom");
-			 System.out.println("name  "+name);
+			// System.out.println("name  "+name);
 			 
 			 BigDecimal laltitude =   geo_shape.getBigDecimal(0);
-			 System.out.println("laltitude  "+laltitude);
+			//System.out.println("laltitude  "+laltitude);
 			 BigDecimal longitude =  geo_shape.getBigDecimal(1);
-			 System.out.println("longitude  "+longitude);
+			 //System.out.println("longitude  "+longitude);
 			 
 
 				EquipementDao eqDao = new EquipementDao(sf);
