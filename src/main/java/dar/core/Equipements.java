@@ -1,5 +1,7 @@
 package dar.core;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,9 +24,9 @@ public class Equipements {
 	@Column(name = "type", length = 45)
 	@Expose private String type;
 	@Column(name = "laltitude", length = 45)
-	@Expose private String laltitude;
+	@Expose private BigDecimal laltitude;
 	@Column(name = "longitude", length = 45)
-	@Expose private String longitude;
+	@Expose private BigDecimal longitude;
 	public String getNom() {
 		return nom;
 	}
@@ -37,16 +39,16 @@ public class Equipements {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getLaltitude() {
+	public BigDecimal getLaltitude() {
 		return laltitude;
 	}
-	public void setLaltitude(String laltitude) {
-		this.laltitude = laltitude;
+	public void setLaltitude(BigDecimal laltitude2) {
+		this.laltitude = laltitude2;
 	}
-	public String getLongitude() {
+	public BigDecimal getLongitude() {
 		return longitude;
 	}
-	public void setLongitude(String longitude) {
+	public void setLongitude(BigDecimal longitude) {
 		this.longitude = longitude;
 	}
 	

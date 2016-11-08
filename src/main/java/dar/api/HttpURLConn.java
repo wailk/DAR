@@ -18,14 +18,11 @@ public class HttpURLConn {
 
 
 	
-	public HttpURLConn(String url){
-		this.url = url ; 
+	public HttpURLConn(){
 		
 	}
 	// HTTP GET request
-	private void sendGet() throws Exception {
-
-		//String url = "http://www.google.com/search?q=mkyong";
+	public String sendGet(String url) throws Exception {
 
 		URL obj = new URL(url);
 		HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -50,21 +47,13 @@ public class HttpURLConn {
 		}
 		in.close();
 
-		//print result
-//		System.out.println(response.toString());
-		//to json 
-		JSONObject hole = new JSONObject(response.toString());
-		JSONArray records = (JSONArray) hole.get("records");
-		//System.out.println(records);
-		for (int i = 0; i < records.length(); i++) {
-			 System.out.println(records.getJSONObject(i));
-			}
+		return response.toString() ;
+		
 	}
 
 	// HTTP POST request
-	private void sendPost() throws Exception {
+	public String sendPost(String url) throws Exception {
 
-		String url = "https://selfsolve.apple.com/wcResults.do";
 		URL obj = new URL(url);
 		HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
 
@@ -98,21 +87,10 @@ public class HttpURLConn {
 		in.close();
 
 		//print result
-		System.out.println(response.toString());
+		return response.toString();
 
 	}
 	
-	public static void main(String[] args) throws Exception {
-
-		String url = "http://data.iledefrance.fr/api/records/1.0/search/?dataset=installations_sportives2016&facet=ins_insee&facet=fam_nb";
-		HttpURLConn http = new HttpURLConn(url);
-
-		System.out.println("Testing 1 - Send Http GET request");
-		http.sendGet();
-
-//		System.out.println("\nTesting 2 - Send Http POST request");
-//		http.sendPost();
-
-	}
+	
 
 }
