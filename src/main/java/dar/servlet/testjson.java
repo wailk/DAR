@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.SessionFactory;
+import org.json.JSONObject;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -27,14 +28,14 @@ public class testjson extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("application/json");
-		SessionFactory sf = HandleHibernate.getSF();
-		AppartementDao apdao = new AppartementDao(sf);
 		
-		Appartements app = apdao.getElement(Appartements.class, 1);
-		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
+		JSONObject obj = new JSONObject();
+		obj.put("fname", "wail");
+		obj.put("lname", "khecha");
 		
-		response.getWriter().append(gson.toJson(app));
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+		response.getWriter().append(obj.toString());
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

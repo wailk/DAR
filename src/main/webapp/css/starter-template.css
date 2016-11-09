@@ -1,0 +1,20 @@
+body {
+    padding-top: 4rem;
+}
+.starter-template {
+    text-align: center;
+}
+
+#navbar{
+    border-bottom:1px solid #e2e2e2;
+}
+#navbar li a {
+    border-left: 1px solid #e2e2e2;
+    padding-left: 15px;
+    font-size: 22px;
+}
+
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+}
