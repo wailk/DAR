@@ -25,6 +25,19 @@ public class AppartServices {
 		
 	}
 	
+	public static void suppAppart(int id){
+		
+		SessionFactory	sf = HandleHibernate.getSF() ;
+		AppartementDao appdao= new AppartementDao(sf);
+		Appartements app = appdao.getElement(Appartements.class, id);
+		appdao.removeElement(app);
+		
+		
+		
+		
+		
+	}
+	
 	
 	
 	
