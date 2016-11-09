@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
 			response.sendRedirect(PAGE_REDIRECT);
 			return ; 
 		}else{
-			System.out.println("Invalid shit ! ");
+			System.out.println("Invalid  ! ");
 		}
 			 
 		this.getServletContext().getRequestDispatcher(VUE ).forward(request, response); ; 
