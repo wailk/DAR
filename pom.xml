@@ -52,10 +52,16 @@
 			<version>2.6.2</version>
 		</dependency>
 		<dependency>
-    <groupId>org.json</groupId>
-    <artifactId>json</artifactId>
-    <version>20160810</version>
-</dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+		
+		<dependency>
+         <groupId>org.mindrot</groupId>
+         <artifactId>jbcrypt</artifactId>
+         <version>0.3m</version>
+      </dependency>
 
 	</dependencies>
 	<build>
