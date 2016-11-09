@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ForeignKey;
+import org.json.JSONObject;
 
 import com.google.gson.annotations.Expose;
 
@@ -30,6 +31,20 @@ public class Appartements implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
+	
+	// JSON keys
+	
+	private static final String KEY_USER_ID = "user_id";
+	private static final String KEY_ADDRESS = "address";
+	private static final String KEY_TYPE = "type";
+	private static final String KEY_AREA_SIZE = "area";
+	private static final String KEY_FURNITURE = "furnished";
+	private static final String KEY_RENT = "rent";
+	
+	
+	
+	
 	@Id()
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_appartement;
@@ -42,7 +57,7 @@ public class Appartements implements Serializable {
 	@Column(name = "type", length = 45)
 	@Expose private String type;
 	@Column(name = "superficie", length = 45)
-	@Expose private String superficie;
+	@Expose private int superficie;
 	@Column(name = "meuble")
 	@Expose private boolean meuble;
 	@Column(name="loyer")
@@ -84,10 +99,10 @@ public class Appartements implements Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getSuperficie() {
+	public int getSuperficie() {
 		return superficie;
 	}
-	public void setSuperficie(String superficie) {
+	public void setSuperficie(int superficie) {
 		this.superficie = superficie;
 	}
 	public boolean isMeuble() {
@@ -108,6 +123,18 @@ public class Appartements implements Serializable {
 		return "Appartements [id_appartement=" + id_appartement + ", id_user=" + id_user + ", adresse=" + adresse
 				+ ", type=" + type + ", superficie=" + superficie + ", meuble=" + meuble + ", loyer=" + loyer
 				+ ", photos=" + photos + "]";
+	}
+	
+	
+	public JSONObject toJSON(){
+		JSONObject res = new JSONObject();
+		res.put(KEY_ADDRESS, adresse);
+		res.put(KEY_AREA_SIZE, superficie);
+		res.put(KEY_FURNITURE, meuble);
+		res.put(KEY_RENT, loyer);
+		res.put(KEY_TYPE, type);
+		res.put(KEY_USER_ID, id_user.getId_user());
+		return res;
 	}
 	
 	

@@ -61,7 +61,7 @@ public class Hibernate_tests{
 		appar.setLoyer(500);
 		appar.setMeuble(true);
 		appar.setType("Studio T1");
-		appar.setSuperficie("15 m²");
+		appar.setSuperficie(15);
  
                 Transaction tx = session.beginTransaction();
                 session.save(appar);
