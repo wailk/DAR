@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import dar.services.LoginForm;
 import dar.tools.R;
 
-@WebServlet("/cnx")
+@WebServlet("/Login")
 public class LoginServlet extends HttpServlet {
 	/**
 	 * 
@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 	String ATT_USER_SESSION="user"  ; 
 	String VUE="/jsp/cnx.jsp" ;
 	String PAGE_REDIRECT="home" ;
-	String PAGE_ERR_REDIRECT="/cnx" ;
+	String PAGE_ERR_REDIRECT="/Login" ;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,9 +23,9 @@ public class Equipements {
 	@Expose private String nom;
 	@Column(name = "type", length = 45)
 	@Expose private String type;
-	@Column(name = "laltitude", length = 45)
+	@Column(name = "laltitude",  precision = 19, scale = 4)
 	@Expose private BigDecimal laltitude;
-	@Column(name = "longitude", length = 45)
+	@Column(name = "longitude",  precision = 19, scale = 4)
 	@Expose private BigDecimal longitude;
 	public String getNom() {
 		return nom;
