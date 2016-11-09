@@ -1,13 +1,9 @@
 package dar.servlet;
-package l3.servlets.search;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -38,12 +34,6 @@ public class SearchServlet extends HttpServlet {
 
 		HttpSession session=request.getSession() ; 
 
-
-		// Create a Pattern object
-
-
-		// Now create matcher object.
- 
 		try{
 			String prix_min=request.getParameter("min");
 			String prix_max=request.getParameter("max");
