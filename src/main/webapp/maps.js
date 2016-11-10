@@ -1,11 +1,13 @@
 var map;
-
+var geocoder;
 function initMap() {
     map = new google.maps.Map(document.getElementById('map'), {
         zoom: 13,
         center: new google.maps.LatLng(48.8566, 2.3522),
         mapTypeId: 'roadmap'
     });
+    
+    geocoder = new google.maps.Geocoder();
 
     /*var cityCircle = new google.maps.Circle({
         strokeColor: '#FF0000',
@@ -17,6 +19,8 @@ function initMap() {
         center: new google.maps.LatLng(48.8566, 2.3522),
         radius: 1000
     });*/
+
+
 
     var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
     var icons = {

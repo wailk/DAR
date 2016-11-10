@@ -9,8 +9,8 @@
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://bdcartimmo.ckxwh1hda8jq.us-east-1.rds.amazonaws.com:3306/cartimmobd</property>
  
-        <property name="hibernate.connection.username">xxxx</property>
-        <property name="hibernate.connection.password">xxxxx</property>
+        <property name="hibernate.connection.username">cartimmo</property>
+        <property name="hibernate.connection.password">cartimmo</property>
         <property name="hibernate.connection.pool_size">10</property>
         
  
