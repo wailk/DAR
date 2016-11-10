@@ -66,14 +66,14 @@ public class Appartements implements Serializable {
 	@Expose private BigDecimal latitude;
 	@Column(name = "longitude",  precision = 19, scale = 4)
 	@Expose private BigDecimal longitude;
-	@Column(name="codepostal")
-	private int codepostal ;
+	@Column(name="codepostal", length = 45)
+	private String codepostal ;
 	
 	
-	public int code_postal() {
+	public String code_postal() {
 		return codepostal;
 	}
-	public void code_postal(int c) {
+	public void code_postal(String c) {
 		this.codepostal = c;
 	}
 

@@ -8,7 +8,7 @@
 </head>
 <body>
 	Page de connexion
-	<form name="frm" method="post" action="cnx">
+	<form name="frm" method="post" action="Login">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="22%">&nbsp;</td>
