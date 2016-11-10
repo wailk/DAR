@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import dar.dao.EquipementsServices;
+
+import dar.services.EquipementsServices;
 
 @WebServlet("/by")
 public class SearchForEquipementsServlet extends HttpServlet {
