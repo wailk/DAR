@@ -1,5 +1,9 @@
 package dar.services;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.hibernate.SessionFactory;
 
 import dar.core.Appartements;
@@ -34,6 +38,22 @@ public class AppartServices {
 		
 		
 		
+		
+		
+	}
+
+	public static List<Appartements> search(String prix_max, String prix_min, String ville) {
+		
+		Map<String, String> map = new HashMap<String,String>();
+		String query = "";
+		if(prix_min != "0") query = "loyer > "+prix_min;
+		if(prix_max != "0") query = query + "loyer < "+prix_max;
+		if(ville != "0") query = query + "ville ="+ville;
+		
+		SessionFactory	sf = HandleHibernate.getSF() ;
+		AppartementDao appdao= new AppartementDao(sf);
+		List<Appartements> list_app = appdao.getFromQuery(query);
+		return list_app ;
 		
 		
 	}
