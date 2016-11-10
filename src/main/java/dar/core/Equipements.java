@@ -1,6 +1,7 @@
 package dar.core;
 
 import java.math.BigDecimal;
+import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,11 +10,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.json.JSONObject;
+
 import com.google.gson.annotations.Expose;
 
 @Entity
 @Table(name = "Equipements")
 public class Equipements {
+	
+	
+	
+	
+	// JSON keys
+	
+
+		public static final String KEY_TYPE = "type";
+		public static final String KEY_NAME = "name";
+		public static final String KEY_LALTITUDE = "laltitude";
+		public static final String KEY_LONGITUDE = "longitude";
 	
 	@Id()
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -21,6 +35,9 @@ public class Equipements {
 	
 	@Column(name = "name", length = 100)
 	@Expose private String nom;
+	
+	@Column(name = "adresse", length = 100)
+	@Expose private String adresse;
 	@Column(name = "type", length = 45)
 	@Expose private String type;
 	@Column(name = "laltitude",  precision = 19, scale = 4)
@@ -58,6 +75,17 @@ public class Equipements {
 		return "Equipement [nom=" + nom + ", type=" + type + ", latitude=" + laltitude
 				+ ", type=" + type + ", longitude=" + longitude + "]";
 	}
+	
+	public JSONObject toJSON(){
+		JSONObject res = new JSONObject();
+		res.put(KEY_NAME, this.nom);
+		res.put(KEY_TYPE, type);
+		res.put(KEY_LALTITUDE,laltitude);
+		res.put(KEY_LONGITUDE,longitude);
+		
+		return res;
+	}
+	
 	
 	
 
