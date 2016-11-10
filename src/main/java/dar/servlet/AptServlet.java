@@ -20,6 +20,7 @@ import dar.core.Users;
 import dar.dao.AppartementDao;
 import dar.services.AppartServices;
 import dar.utils.HandleHibernate;
+import dar.utils.dbProfilTools;
 
 
 @WebServlet("/apt")
@@ -72,12 +73,11 @@ public class AptServlet extends HttpServlet {
 			return ; 
 		}
 
-		Users tmpUser=(Users)session.getAttribute("user") ;
-		int id_user = tmpUser.getId_user() ; 
-		Appartements app=new Appartements() ; 
+		String login_user=(String) session.getAttribute("ATT_USER_SESSION") ;
+		Users tmpUser = dbProfilTools.getUser(login_user) ;  
 		try{
 			String adresse=request.getParameter("adresse") ; 
-			String description=request.getParameter("desc");
+			//String description=request.getParameter("desc");
 			//int arron=Integer.parseInt(request.getParameter("arron")) ; 
 			String photo=request.getParameter("photo");
 			String superficie=request.getParameter("superficie") ;

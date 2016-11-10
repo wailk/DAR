@@ -14,16 +14,14 @@ import org.json.JSONObject;
 
 import dar.api.HttpURLConn;
 import dar.core.Appartements;
-import dar.core.Equipements;
 import dar.core.Users;
 import dar.dao.AppartementDao;
-import dar.dao.EquipementDao;
 import dar.utils.HandleHibernate;
 
 public class AppartServices {
 	
 	
-	public static void addAppart(Users user,String adresse,double loyer ,boolean meuble,int cd) throws JSONException, Exception{
+	public static void addAppart(Users user,String adresse,double loyer,boolean meuble,int cd) throws JSONException, Exception{
 		
 		Appartements app = new Appartements();
 		app.setAdresse(adresse);

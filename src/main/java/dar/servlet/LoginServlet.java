@@ -21,7 +21,7 @@ public class LoginServlet extends HttpServlet {
 	String ATT_USER="newUser" ; 
 	String ATT_USER_SESSION="user"  ; 
 	String VUE="/jsp/cnx.jsp" ;
-	String PAGE_REDIRECT="home" ;
+	String PAGE_REDIRECT="index.html" ;
 	String PAGE_ERR_REDIRECT="/Login" ;
 	
 	@Override

@@ -20,6 +20,12 @@ public class dbProfilTools {
 	       return list.get(0);
 	}
 	
+	public static Users getUser(String email){
+		SessionFactory sf = HandleHibernate.getSF();
+		UserDao userDao = new UserDao(sf);
+		List<Users> users =  userDao.getFromQuery("from Users where email = " +"'"+email +"'");
+	       return users.get(0);
+	}
 	
 	
 	public static void addUser(Users user){
