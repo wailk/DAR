@@ -8,17 +8,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
-
 import dar.dao.EquipementsServices;
 
-@WebServlet("/SearchNearby")
+@WebServlet("/by")
 public class SearchForEquipementsServlet extends HttpServlet {
-
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
+	
+	 public SearchForEquipementsServlet() {
+			
+	        super();
+	    }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -34,6 +35,7 @@ public class SearchForEquipementsServlet extends HttpServlet {
 
 			JSONArray arr = EquipementsServices.getNearby(laltitude, longitude);
 			response.getWriter().append(arr.toString());
+			
 
 		} catch (Exception e) {
 
