@@ -40,8 +40,8 @@ public class SearchServlet extends HttpServlet {
 		try{
 			String prix_min=request.getParameter("min");
 			String prix_max=request.getParameter("max");
-			String ville=request.getParameter("ville");
-			List<Appartements> appartements= AppartServices.search(prix_max,prix_min,ville);
+			String codepostal=request.getParameter("codepostale");
+			List<Appartements> appartements= AppartServices.search(prix_max,prix_min,codepostal);
 			
 				JSONArray arr = new JSONArray();
 				for(Appartements a : appartements)

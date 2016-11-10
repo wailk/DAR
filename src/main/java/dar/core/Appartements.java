@@ -22,6 +22,9 @@ import com.google.gson.annotations.Expose;
 @Entity
 @Table(name = "Appartements")
 public class Appartements implements Serializable {
+
+
+
 	/**
 	 * 
 	 */
@@ -63,8 +66,18 @@ public class Appartements implements Serializable {
 	@Expose private BigDecimal latitude;
 	@Column(name = "longitude",  precision = 19, scale = 4)
 	@Expose private BigDecimal longitude;
+	@Column(name="codepostal")
+	private int codepostal ;
 	
 	
+	public int code_postal() {
+		return codepostal;
+	}
+	public void code_postal(int c) {
+		this.codepostal = c;
+	}
+
+
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_appartement")
 	private Set<Photos> photos ;
 	
@@ -117,6 +130,20 @@ public class Appartements implements Serializable {
 	}
 	public void setLoyer(double loyer) {
 		this.loyer = loyer;
+	}
+	
+	
+	public BigDecimal getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(BigDecimal latitude) {
+		this.latitude = latitude;
+	}
+	public BigDecimal getLongitude() {
+		return longitude;
+	}
+	public void setLongitude(BigDecimal longitude) {
+		this.longitude = longitude;
 	}
 	
 	@Override
