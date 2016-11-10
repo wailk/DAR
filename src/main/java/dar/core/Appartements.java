@@ -1,11 +1,9 @@
 package dar.core;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashSet;
+import java.math.BigDecimal;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,8 +14,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.ForeignKey;
 import org.json.JSONObject;
 
 import com.google.gson.annotations.Expose;
@@ -41,6 +37,7 @@ public class Appartements implements Serializable {
 	private static final String KEY_AREA_SIZE = "area";
 	private static final String KEY_FURNITURE = "furnished";
 	private static final String KEY_RENT = "rent";
+	private static final String KEY_LOCATION = "location";
 	
 	
 	
@@ -51,17 +48,21 @@ public class Appartements implements Serializable {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user",referencedColumnName="id_user")
-	@Expose private Users id_user;
+	private Users id_user;
 	@Column(name = "adresse", length = 100)
-	@Expose private String adresse;
+	private String adresse;
 	@Column(name = "type", length = 45)
-	@Expose private String type;
+	private String type;
 	@Column(name = "superficie", length = 45)
-	@Expose private int superficie;
+	private int superficie;
 	@Column(name = "meuble")
-	@Expose private boolean meuble;
+	private boolean meuble;
 	@Column(name="loyer")
-	@Expose private double loyer ;
+	private double loyer ;
+	@Column(name = "laltitude",  precision = 19, scale = 4)
+	@Expose private BigDecimal latitude;
+	@Column(name = "longitude",  precision = 19, scale = 4)
+	@Expose private BigDecimal longitude;
 	
 	
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_appartement")
@@ -133,6 +134,10 @@ public class Appartements implements Serializable {
 		res.put(KEY_FURNITURE, meuble);
 		res.put(KEY_RENT, loyer);
 		res.put(KEY_TYPE, type);
+		JSONObject loc = new JSONObject();
+		loc.put("latitute", latitude);
+		loc.put("longitude", longitude);
+		res.put(KEY_LOCATION, loc);
 		res.put(KEY_USER_ID, id_user.getId_user());
 		return res;
 	}
