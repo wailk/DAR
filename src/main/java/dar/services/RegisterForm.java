@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dar.core.Users;
+import dar.tools.Cryptage;
 import dar.tools.FormTools;
 import dar.tools.R;
 import dar.utils.dbProfilTools;
@@ -25,9 +26,10 @@ public class RegisterForm {
 			form.validationEmail(mail);
 			form.validationNom(nom);
 			form.validationNom(prenom);
+			String hashpwd = Cryptage.hashpw(pass);
 			
 			
-			Users newUser=new Users( nom, prenom, mail,tel, pass);
+			Users newUser=new Users( nom, prenom, mail,tel, hashpwd);
 			request.setAttribute("newUser", newUser);
 			//Enregistrement dans la base de donnÃ©e 
 			dbProfilTools.addUser(newUser) ;
