@@ -21,13 +21,15 @@ import dar.utils.HandleHibernate;
 public class AppartServices {
 	
 	
-	public static void addAppart(Users user,String adresse,double loyer,boolean meuble,int cd) throws JSONException, Exception{
+	public static void addAppart(Users user,String adresse,double loyer, int superficie, String type,boolean meuble,int cd) throws JSONException, Exception{
 		
 		Appartements app = new Appartements();
 		app.setAdresse(adresse);
 		app.setLoyer(loyer);
 		app.setMeuble(meuble);
 		app.setUser(user);
+		app.setSuperficie(superficie);
+		app.setType(type);
 		traitementGoogleGeo(app,adresse);
 		SessionFactory	sf = HandleHibernate.getSF() ;
 		AppartementDao appdao= new AppartementDao(sf);
@@ -49,7 +51,7 @@ public class AppartServices {
 			BigDecimal lalt = geo.getJSONObject("location").getBigDecimal("lat");
 			BigDecimal longi = geo.getJSONObject("location").getBigDecimal("lng");
 			app.setLatitude(lalt);
-			app.setLatitude(longi);
+			app.setLongitude(longi);
 
 	}
 	

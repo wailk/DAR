@@ -1,5 +1,7 @@
 body {
-    padding-top: 4rem;
+    padding-top: 6rem;
+    height: 100%;
+    width: 100%;
 }
 .starter-template {
     text-align: center;
@@ -7,14 +9,37 @@ body {
 
 #navbar{
     border-bottom:1px solid #e2e2e2;
+    padding-right: 10px;
 }
 #navbar li a {
     border-left: 1px solid #e2e2e2;
-    padding-left: 15px;
-    font-size: 22px;
+    padding: 15px;
+    font-size: 13pt;
 }
 
 .container-full {
     margin: 0 auto;
     width: 100%;
+}
+
+#apt_address {
+    font-size: 17pt;
+}
+
+#apt_price {
+    font-size: 22pt;
+}
+
+#apt_rooms, #apt_area {
+    font-weight: bold;
+}
+
+#map {
+    height: 800px;
+    width: 1200px;
+}
+
+#toolbar {
+    padding: 11px;
+
 }

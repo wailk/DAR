@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.ForeignKey;
+import org.json.JSONObject;
 
 
 @Entity
@@ -47,11 +48,14 @@ public class Photos {
 	public void setChemin(String chemin) {
 		this.chemin = chemin;
 	}
-
-
-
-
-
+	
+	public JSONObject toJSON(){
+		JSONObject obj = new JSONObject();
+		
+		
+		return obj;
+		
+	}
 
 
 

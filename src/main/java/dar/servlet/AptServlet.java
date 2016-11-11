@@ -80,7 +80,7 @@ public class AptServlet extends HttpServlet {
 			//String description=request.getParameter("desc");
 			//int arron=Integer.parseInt(request.getParameter("arron")) ; 
 			String photo=request.getParameter("photo");
-			String superficie=request.getParameter("superficie") ;
+			int superficie= new Integer(request.getParameter("superficie"));
 			String type=request.getParameter("type") ;
 			String meuble = request.getParameter("meuble");
 			int code_postal = Integer.valueOf(request.getParameter("codepostal"));
@@ -88,7 +88,8 @@ public class AptServlet extends HttpServlet {
 			String chaine_loyer=request.getParameter("loyer");
 			double loyer = Double.parseDouble(chaine_loyer);
 			
-			AppartServices.addAppart(tmpUser, adresse, loyer, m,code_postal);
+			AppartServices.addAppart(tmpUser, adresse, loyer, superficie,type, m,code_postal);
+			//addAppart(Users user,String adresse,double loyer, int superficie, String type,boolean meuble,int cd)
 	
 		}catch(Exception e){
 			try{
