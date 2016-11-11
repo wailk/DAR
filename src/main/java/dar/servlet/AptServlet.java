@@ -41,9 +41,7 @@ public class AptServlet extends HttpServlet {
 		JSONArray arr = new JSONArray();
 		for(Appartements a : appartements)
 			arr.put(a.toJSON());
-		
-			
-		response.getWriter().append(arr.toString());
+		response.getWriter().append(new JSONObject().put("apps", arr).toString());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -162,8 +162,8 @@ public class Appartements implements Serializable {
 		res.put(KEY_RENT, loyer);
 		res.put(KEY_TYPE, type);
 		JSONObject loc = new JSONObject();
-		loc.put("latitute", latitude);
-		loc.put("longitude", longitude);
+		loc.put("lat", latitude);
+		loc.put("lng", longitude);
 		res.put(KEY_LOCATION, loc);
 		res.put(KEY_USER_ID, id_user.getId_user());
 		return res;
