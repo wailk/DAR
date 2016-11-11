@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Connexion Page</title>
+<title>Connexion Pagee</title>
 </head>
 <body>
 	Page de connexion
-	<form name="frm" method="post" action="dar.projet.web/cnx">
+	<form name="frm" method="post" action="Login">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<td width="22%">&nbsp;</td>

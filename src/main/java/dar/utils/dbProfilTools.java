@@ -36,6 +36,11 @@ public class dbProfilTools {
 		
 	}
 	
+	public static void main(String[] args){
+		
+		Users us = getUser("moatez@gamil.com","1234");
+		us.toString();
+	}
 	
 		public static void deleteUser(int id_profil){
 			
