@@ -49,39 +49,34 @@ var samples = [
     ;
 
 
-
-
-
-
-
-
 function getRandomInRange(from, to, fixed) {
     return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
     // .toFixed() returns string, so ' * 1' is a trick to convert to number
 }
 
 
-function addMarkerByAddress(address) {
-    geocoder.geocode({'address': address}, function (results, status) {
-        if (status == 'OK') {
-            //map.setCenter(results[0].geometry.location);
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-        } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-        }
+function addMarkerByAptObject(obj) {
+    var marker = new google.maps.Marker({
+        map: map,
+        position: new google.maps.LatLng(obj.location.lat, obj.location.lng)
+    });
+
+    marker.addListener('click',function(){
+        $("#apt_address").html(obj.address);
+        $("#apt_area").html(obj.area + " m²");
+        $("#apt_price").html(obj.rent  + " €");
+        $("#apt_rooms").html(obj.type);
     });
 }
+
 
 function getAppartments() {
     $.ajax({
         url: "apt", success: function (result) {
-
-            for (var i in result) {
-                addMarkerByAddress(result[i].address + "");
-                console.log("[" + i + "] Marker added for: " + result[i].address);
+            var apps =  result.apps;
+            for (var i in apps) {
+                addMarkerByAptObject(apps[i]);
+                console.log("[" + i + "] Marker added for: " + apps[i].address);
             }
         }
     });
@@ -122,22 +117,10 @@ function addCard() {
 }
 
 
-
-
 function openAppartment(obj){
     $("#apt_address").html(obj.address);
     $("#apt_area").html(obj.area + " m²");
     $("#apt_price").html(obj.rent  + " €");
     $("#apt_rooms").html(obj.type);
-}
-
-
-function timeout() {
-    setTimeout(function () {
-        // Do Something Here
-        // Then recall the parent function to
-        // create a recursive loop.
-        timeout();
-    }, 1000);
 }
 
