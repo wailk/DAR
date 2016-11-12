@@ -58,8 +58,8 @@ function getRandomInRange(from, to, fixed) {
 function addMarkerByAptObject(obj) {
     var marker = new google.maps.Marker({
         map: map,
-        position: new google.maps.LatLng(obj.location.lat, obj.location.lng)
-    });
+        position: new google.maps.LatLng(obj.location.lat, obj.location.lng),
+        icon : "img/house.png"});
 
     marker.addListener('click',function(){
         $("#apt_address").html(obj.address);
