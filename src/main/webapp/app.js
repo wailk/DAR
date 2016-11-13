@@ -1,4 +1,6 @@
 
+var selected_id = 0;
+
 function getRandomInRange(from, to, fixed) {
     return (Math.random() * (to - from) + from).toFixed(fixed) * 1;
     // .toFixed() returns string, so ' * 1' is a trick to convert to number
@@ -12,6 +14,7 @@ function addMarkerByAptObject(obj) {
         icon : "img/house.png"});
 
     marker.addListener('click',function(){
+        selected_id = obj.id;
         $("#apt_address").html(obj.address);
         $("#apt_area").html(obj.area + " m²");
         $("#apt_price").html(obj.rent  + " €");
