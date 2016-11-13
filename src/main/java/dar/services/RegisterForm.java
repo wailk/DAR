@@ -28,13 +28,14 @@ public class RegisterForm {
 			form.validationNom(prenom);
 			String hashpwd = Cryptage.hashpw(pass);
 			
-			
+			if(!UsersServices.exist(mail)){
 			Users newUser=new Users( nom, prenom, mail,tel, hashpwd);
 			request.setAttribute("newUser", newUser);
 			//Enregistrement dans la base de donnÃ©e 
 			dbProfilTools.addUser(newUser) ;
+			}
+			else return false ;
 		}catch(Exception e){
-			request.setAttribute("erreurMsg",e.getMessage());
 			return false ; 
 		}
 	
