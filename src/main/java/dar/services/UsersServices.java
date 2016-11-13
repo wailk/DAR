@@ -18,10 +18,10 @@ public class UsersServices {
 		
 		SessionFactory	sf = HandleHibernate.getSF() ;
 		UserDao appdao= new UserDao(sf);
-		String query = "from Users where email ="+email;
+		String query = "from Users where email = '"+email + "'";
 		List<Users> Users = appdao.getFromQuery(query);
-		if( Users.get(0) != null ) return true ;
-		return false ;
+		if(Users.isEmpty() ) return false ;
+		return true ;
 		
 	}
 
