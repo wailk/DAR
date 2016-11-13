@@ -39,7 +39,7 @@ public class RegisterServlet extends HttpServlet {
 			Users user=(Users)request.getAttribute(ATT_USER) ; 
 			System.out.println(user);
 			HttpSession session= request.getSession() ;
-			session.setAttribute(ATT_USER_SESSION, user);
+			session.setAttribute(ATT_USER_SESSION, user.getEmail());
 			response.sendRedirect(PAGE_REDIRECT);
 			return ; 
 		}else{

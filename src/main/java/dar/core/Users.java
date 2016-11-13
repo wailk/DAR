@@ -9,7 +9,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.google.gson.annotations.Expose;
@@ -46,14 +48,11 @@ public class Users implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id_user")
 	@Expose
 	private Set<Appartements> appartements;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "id_favoris",referencedColumnName="id_favoris")
+	private Favoris favoris;
 
-	public Set<Appartements> getAppartemens() {
-		return appartements;
-	}
-
-	public void setAppartemens(Set<Appartements> appartemens) {
-		this.appartements = appartemens;
-	}
 
 	public Users() {
 	}
@@ -117,6 +116,24 @@ public class Users implements Serializable {
 
 	public void setId_user(int id_user) {
 		this.id_user = id_user;
+	}
+
+	
+	
+	public Set<Appartements> getAppartements() {
+		return appartements;
+	}
+
+	public void setAppartements(Set<Appartements> appartements) {
+		this.appartements = appartements;
+	}
+
+	public Favoris getFavoris() {
+		return favoris;
+	}
+
+	public void setFavoris(Favoris favoris) {
+		this.favoris = favoris;
 	}
 
 	@Override

@@ -28,6 +28,7 @@
     	<mapping class="dar.core.Appartements"></mapping>
     	<mapping class="dar.core.Photos"></mapping>
     	<mapping class="dar.core.Equipements"></mapping>
+    	<mapping class="dar.core.Favoris"></mapping>
  
  
 </session-factory>

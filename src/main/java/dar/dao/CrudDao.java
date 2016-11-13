@@ -51,6 +51,13 @@ public class CrudDao<T> {
 		session.close();
 	}
 
+	public void update(T elem) {
+		Session session = sf.openSession();
+		Transaction tx = session.beginTransaction();
+		session.update(elem);
+		tx.commit();
+		session.close();
+	}
 	public List<T> getFromQuery(String q) {
 		Session session = sf.openSession();
 		List<T> list = (List<T>) session.createQuery(q).list();

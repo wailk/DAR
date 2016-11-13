@@ -38,6 +38,14 @@ public class AppartServices {
 		
 		
 	}
+	public static Appartements getAppartbyId(int id){
+		SessionFactory	sf = HandleHibernate.getSF() ;
+		AppartementDao appdao= new AppartementDao(sf);
+		String query = "from Appartements where id_appartement ="+id;
+		List<Appartements> appartements = appdao.getFromQuery(query);
+		return appartements.get(0);
+		
+	}
 	
 	private static void traitementGoogleGeo(Appartements app,String adresse) throws JSONException, Exception {
 		HttpURLConn http = new HttpURLConn();
@@ -55,9 +63,10 @@ public class AppartServices {
 
 	}
 	
-//	public static void main(String[] args) throws JSONException, Exception{
-//		traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais 75007 paris");
-//	}
+	public static void main(String[] args) throws JSONException, Exception{
+		//traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais 75007 paris");
+		//System.out.println( getAppartbyId(487).toString());
+	}
 
 	public static void suppAppart(int id){
 		

@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -52,6 +53,8 @@ public class Appartements implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user",referencedColumnName="id_user")
 	private Users id_user;
+	
+	
 	@Column(name = "adresse", length = 100)
 	private String adresse;
 	@Column(name = "type", length = 45)
@@ -80,6 +83,9 @@ public class Appartements implements Serializable {
 
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_appartement")
 	private Set<Photos> photos ;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	private Set<Favoris> favoris ;
 	
 	
 	public Set<Photos> getPhotos() {
