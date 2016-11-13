@@ -17,4 +17,15 @@ public class R {
 		public static String TEL = "telephone";		
 
 	}
+	public static class Apt {
+		public static String ADRESSE = "adresse";
+		public static String CODEPOSTAL = "codePostal";
+		public static String VILLE = "ville";
+		public static String TYPE = "type";
+		public static String SUPERFICIE = "superficie";
+		public static String LOYER = "loyer";
+		public static String PHOTO = "photo";
+		public static String MEUBLE = "meuble";
+	}
+	
 }
