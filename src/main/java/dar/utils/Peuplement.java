@@ -11,7 +11,7 @@ import dar.services.AppartServices;
 public class Peuplement {
 	
 	public static void main(String[] args) {
-		Users tmpUser = dbProfilTools.getUser("root@gamil.com") ;
+		Users tmpUser = dbProfilTools.getUser("david@gmail.com") ;
 		try (Stream<String> stream = Files.lines(Paths.get("C:\\Users\\Wail\\git\\DAR\\src\\main\\resources\\apt_raw.txt"))) {
 	        stream.forEach(x -> {
 	        	String[] parts = x.split(";");

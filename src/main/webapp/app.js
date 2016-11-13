@@ -76,5 +76,8 @@ function openAppartment(obj){
 
 
 function favoriteAppartment(id){
-
+    data = {idapp : id};
+    $.post("Favoris", function(data, status){
+        console.log("favorited apt:" + id);
+    });
 }
