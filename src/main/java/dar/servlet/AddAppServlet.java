@@ -15,6 +15,7 @@ import org.json.JSONObject;
 import dar.core.Appartements;
 import dar.core.Users;
 import dar.services.AppartServices;
+import dar.tools.R;
 
 @WebServlet("/Addapp")
 public class AddAppServlet extends HttpServlet {
@@ -31,6 +32,9 @@ public class AddAppServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
+		
+		
 		doGet(request, response);
 	}
 

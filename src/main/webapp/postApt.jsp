@@ -35,7 +35,7 @@
 	</nav>
 
 	<div class="container ">
-		<form>
+		<form action="apt" method="post" enctype="multipart/form-data">
 			<fieldset class="form-group">
 				<legend>Appartement</legend>
 				<div class="form-group">
@@ -45,15 +45,11 @@
 				</div>
 
 				<div class="form-group">
-					<label for="codePostal">code Postal</label> <input type="text"
+					<label for="codePostal">code Postal</label> <input type="number"
 						class="form-control" id="codePostal" name="codePostal"
 						placeholder="code Postal">
 				</div>
 
-				<div class="form-group">
-					<label for="ville">ville</label> <input type="text"
-						class="form-control" id="ville" name="ville" placeholder="ville">
-				</div>
 			</fieldset>
 			<div class="form-group">
 				<label for="type">Type d'appartement</label> <select
