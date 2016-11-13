@@ -19,6 +19,7 @@ import dar.core.Appartements;
 import dar.core.Users;
 import dar.dao.AppartementDao;
 import dar.services.AppartServices;
+import dar.tools.R;
 import dar.utils.HandleHibernate;
 import dar.utils.dbProfilTools;
 
@@ -71,19 +72,19 @@ public class AptServlet extends HttpServlet {
 			return ; 
 		}
 
-		String login_user=(String) session.getAttribute("ATT_USER_SESSION") ;
+		String login_user=(String) session.getAttribute("user") ;
 		Users tmpUser = dbProfilTools.getUser(login_user) ;  
 		try{
-			String adresse=request.getParameter("adresse") ; 
+			String adresse=request.getParameter(R.Apt.ADRESSE) ; 
 			//String description=request.getParameter("desc");
 			//int arron=Integer.parseInt(request.getParameter("arron")) ; 
-			String photo=request.getParameter("photo");
-			int superficie= new Integer(request.getParameter("superficie"));
-			String type=request.getParameter("type") ;
-			String meuble = request.getParameter("meuble");
-			int code_postal = Integer.valueOf(request.getParameter("codepostal"));
+			String photo=request.getParameter(R.Apt.PHOTO);
+			int superficie= new Integer(request.getParameter(R.Apt.SUPERFICIE));
+			String type=request.getParameter(R.Apt.TYPE) ;
+			String meuble = request.getParameter(R.Apt.MEUBLE);
+			int code_postal = Integer.valueOf(request.getParameter(R.Apt.CODEPOSTAL));
 			Boolean m = Boolean.parseBoolean(meuble);
-			String chaine_loyer=request.getParameter("loyer");
+			String chaine_loyer=request.getParameter(R.Apt.LOYER);
 			double loyer = Double.parseDouble(chaine_loyer);
 			
 			AppartServices.addAppart(tmpUser, adresse, loyer, superficie,type, m,code_postal);
