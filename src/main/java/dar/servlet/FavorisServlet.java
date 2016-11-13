@@ -37,13 +37,47 @@ public class FavorisServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		JSONObject json = new JSONObject();
+		String PAGE_NOT_LOGGED = "/Login";
 		HttpSession session = request.getSession();
+		PrintWriter out = response.getWriter();
+		if (session.getAttribute("user") == null) {
+
+			System.out.println("redirection vers la page d'authentification ...");
+			try {
+				json.put("c", 1);
+				json.put("d", "user null");
+
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			out.print(json.toString());
+			System.out.println("Invalid shit ! ");
+			response.sendRedirect(PAGE_NOT_LOGGED);
+
+			return;
+		}
+		
+		try {
+
 		String login = (String) session.getAttribute(ATT_USER_SESSION);
 		Favoris fav = FavorisServices.getFavoris(login);
 		response.getWriter().append(fav.toJSON().toString());
 
 		// System.out.println("c bon utlisateur connecte");
 		return;
+		} catch (Exception e) {
+			try {
+				json.put("c", 1);
+				json.put("d", "Mauvais param");
+
+			} catch (Exception e1) {
+				e.printStackTrace();
+			}
+			out.print(json.toString());
+			return;
+
+		}
 
 	}
 
