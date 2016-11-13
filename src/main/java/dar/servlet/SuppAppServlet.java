@@ -45,14 +45,13 @@ public class SuppAppServlet extends HttpServlet {
 				e1.printStackTrace();
 			}
 			out.print(json.toString());
-			System.out.println("Invalid shit ! ");
+			System.out.println("Invalid ! ");
 			response.sendRedirect(PAGE_NOT_LOGGED);
 
 			return ; 
 		}
 
-		Users tmpUser=(Users)session.getAttribute("user") ;
-		int id_user = tmpUser.getId_user() ; 
+		String tmpUser=(String)session.getAttribute("user") ; 
 		int idapp = Integer.parseInt(request.getParameter("id"));
 		try{
 			

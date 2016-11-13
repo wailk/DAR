@@ -45,7 +45,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session= request.getSession() ;
 			session.setAttribute(ATT_USER_SESSION, login);
 			response.sendRedirect(PAGE_REDIRECT);
-			//System.out.println("c bon utlisateur connecte");
+			System.out.println("c bon utlisateur connecte");
 			return ; 
 		}else{
 			

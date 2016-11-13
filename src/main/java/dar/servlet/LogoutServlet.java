@@ -14,11 +14,11 @@ import javax.servlet.http.HttpSession;
  * Servlet implementation class LogoutServlet
  */
 
-	@WebServlet("/logout")
+	@WebServlet("/Logout")
 	public class LogoutServlet extends HttpServlet {
 		private static final long serialVersionUID = 1L;
 		
-		String VUE="/index.jsp" ;
+		String VUE="index.html" ;
 
 		
 		protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

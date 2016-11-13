@@ -25,15 +25,15 @@ public class LoginForm {
 			//r�cup�rer l'utilisateur de la base de donn�e
 			System.out.println("pseudo "+pseudo);
 			System.out.println("pass "+pass);
-			//Cryptage.hashpw(pass)
-			newUser=dbProfilTools.getUser(pseudo,pass) ; 
+			
+			newUser=dbProfilTools.getUser(pseudo,Cryptage.hashpw(pass)) ; 
 			System.out.println(" user "+newUser.toString() );
 		}catch(Exception e){
 			request.setAttribute("erreurMsg",e.getMessage());
 			return false ; 
 		}
 
-		request.setAttribute("newUser", newUser.getEmail());
+		request.setAttribute("user", newUser.getEmail());
 
 		
  		return true;

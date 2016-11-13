@@ -13,7 +13,7 @@ import org.json.JSONObject;
 
 import dar.services.EquipementsServices;
 
-@WebServlet("/by")
+@WebServlet("/SearchEq")
 public class SearchForEquipementsServlet extends HttpServlet {
 private static final long serialVersionUID = 1L;
 	
