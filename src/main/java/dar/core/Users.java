@@ -26,7 +26,6 @@ public class Users implements Serializable {
 
 	@Id()
 	@GeneratedValue(strategy = GenerationType.AUTO)
-
 	private int id_user;
 
 	@Column(name = "name", length = 45)
@@ -41,7 +40,7 @@ public class Users implements Serializable {
 	@Column(name = "telephone", length = 45)
 	@Expose
 	private String telephone;
-	@Column(name = "mdp", length = 45)
+	@Column(name = "mdp", length = 256)
 	@Expose(serialize = false)
 	private String mdp;
 
