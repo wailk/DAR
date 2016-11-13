@@ -162,6 +162,7 @@ public class Appartements implements Serializable {
 	
 	public JSONObject toJSON(){
 		JSONObject res = new JSONObject();
+		res.put("id", id_appartement);
 		res.put(KEY_ADDRESS, adresse);
 		res.put(KEY_AREA_SIZE, superficie);
 		res.put(KEY_FURNITURE, meuble);

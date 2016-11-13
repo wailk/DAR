@@ -2,9 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>My Account</title>
+    <link href="css/starter-template.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
 
+<nav id="navbar" class="navbar navbar-fixed-top navbar-light bg-faded">
+    <a class="navbar-brand" href="#"><img src="img/immogeo.png"></a>
+    <ul class="nav navbar-nav ">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="#about">My Account</a></li>
+        <li><a href="#contact">Register</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>My Account</h2>
+    <div class="row">
+        <div id="myListings" class="col-md-6">
+            <h4>My Listings</h4>
+        </div>
+        <div id="myFavorites" class="col-md-6">
+            <h4>My Favorites</h4>
+        </div>
+    </div>
+</div>
+
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
