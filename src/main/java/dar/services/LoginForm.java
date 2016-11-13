@@ -33,7 +33,7 @@ public class LoginForm {
 			return false ; 
 		}
 
-		request.setAttribute("user", newUser.getEmail());
+		//request.setAttribute("user", newUser.getEmail());
 
 		
  		return true;

@@ -20,9 +20,9 @@ public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String ATT_USER="newUser" ; 
 	String ATT_USER_SESSION="user"  ; 
-	String VUE="/jsp/cnx.jsp" ;
+	String VUE="login.html" ;
 	String PAGE_REDIRECT="index.html" ;
-	String PAGE_ERR_REDIRECT="/Login" ;
+	String PAGE_ERR_REDIRECT="login.html" ;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet {
 			session.setAttribute(ATT_USER_SESSION, login);
 			response.sendRedirect(PAGE_REDIRECT);
 			System.out.println("c bon utlisateur connecte");
+			
 			return ; 
 		}else{
 			
