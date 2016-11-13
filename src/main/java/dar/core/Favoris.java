@@ -73,8 +73,9 @@ public class Favoris {
 	public JSONObject toJSON(){
 		JSONObject res = new JSONObject();
 		JSONArray arr = new JSONArray();
+		arr.put(this.id_user.getId_user());
 		for(Appartements a : appartements)
-		arr.put(a.getId_appartement());
+		arr.put(a.toJSON());
 		
 		res.put("apps", arr);
 		

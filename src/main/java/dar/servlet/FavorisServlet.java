@@ -29,16 +29,16 @@ public class FavorisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	String ATT_USER = "newUser";
 	String ATT_USER_SESSION = "user";
-	String VUE = "/jsp/cnx.jsp";
+	String VUE = "login.html";
 	String PAGE_REDIRECT = "index.html";
-	String PAGE_ERR_REDIRECT = "/Login";
+	String PAGE_ERR_REDIRECT = "login.html";
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		JSONObject json = new JSONObject();
-		String PAGE_NOT_LOGGED = "/Login";
+		String PAGE_NOT_LOGGED = "login.html";
 		HttpSession session = request.getSession();
 		PrintWriter out = response.getWriter();
 		if (session.getAttribute("user") == null) {
