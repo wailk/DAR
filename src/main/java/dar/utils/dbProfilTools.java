@@ -16,7 +16,7 @@ public class dbProfilTools {
 	public static Users getUser(String pseudo,String pass){
 		SessionFactory sf = HandleHibernate.getSF();
 		UserDao userDao = new UserDao(sf);
-		List<Users> list =  userDao.getFromQuery("from Users where mdp ="+ pass + "and email = " +"'"+pseudo +"'");
+		List<Users> list =  userDao.getFromQuery("from Users where mdp = "+"'"+ pass +"'"+" and email = " +"'"+pseudo +"'");
 	       return list.get(0);
 	}
 	
@@ -38,7 +38,7 @@ public class dbProfilTools {
 	
 	public static void main(String[] args){
 		
-		Users us = getUser("moatez@gamil.com","1234");
+		Users us = getUser("david@gmail.com","mootez");
 		us.toString();
 	}
 	
