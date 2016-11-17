@@ -1,4 +1,4 @@
-package dar.services;
+package dar.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 
+import dar.services.UsersServices;
 import dar.utils.dbProfilTools;
 
 @WebServlet("/Sendmail")
