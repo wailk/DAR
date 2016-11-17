@@ -116,13 +116,8 @@ public class AptServlet extends HttpServlet {
 			String chaine_loyer = request.getParameter(R.Apt.LOYER);
 			double loyer = Double.parseDouble(chaine_loyer);
 
-			PhotoDao photoDao = new PhotoDao(HandleHibernate.getSF());
-			List<Photos> li = photoDao.getAll(Photos.class);
-			System.out.println("size ==>" + li.size());
 			AppartServices.addAppart(tmpUser, adresse, loyer, superficie, type, m, code_postal, chemin);
 
-			li = photoDao.getAll(Photos.class);
-			System.out.println("size ==>" + li.size());
 			// addAppart(Users user,String adresse,double loyer, int superficie,
 			// String type,boolean meuble,int cd)
 
