@@ -66,6 +66,11 @@ public class AppartServices {
 	public static void main(String[] args) throws JSONException, Exception{
 		//traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais 75007 paris");
 		//System.out.println( getAppartbyId(487).toString());
+		List<Appartements> app = getByUserId(1);
+		JSONArray arr = new JSONArray();
+		for(Appartements a : app)
+			arr.put(a.toJSON());
+		System.out.println(arr.toString());
 	}
 
 	public static void suppAppart(int id){
@@ -74,12 +79,8 @@ public class AppartServices {
 		AppartementDao appdao= new AppartementDao(sf);
 		Appartements app = appdao.getElement(Appartements.class, id);
 		appdao.removeElement(app);
-		
-		
-		
-		
-		
-	}
+}
+	
 
 	public static List<Appartements> search(String prix_max, String prix_min, String code) {
 		
@@ -88,6 +89,20 @@ public class AppartServices {
 		if(prix_min != "0") query = "loyer > "+prix_min;
 		if(prix_max != "0") query = query + "loyer < "+prix_max;
 		if(code != "0") query = query + "codepostal ="+code;
+		
+		SessionFactory	sf = HandleHibernate.getSF() ;
+		AppartementDao appdao= new AppartementDao(sf);
+		List<Appartements> list_app = appdao.getFromQuery(query);
+		return list_app ;
+		
+		
+	}
+	
+public static List<Appartements> getByUserId(int id) {
+		
+		
+		String query = "";
+		query = "from Appartements where id_user = "+id;
 		
 		SessionFactory	sf = HandleHibernate.getSF() ;
 		AppartementDao appdao= new AppartementDao(sf);

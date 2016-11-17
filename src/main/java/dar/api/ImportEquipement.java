@@ -90,10 +90,11 @@ public class ImportEquipement {
 		String url = "http://data.iledefrance.fr/api/records/1.0/search/?dataset=installations_sportives2016&facet=ins_insee&facet=fam_nb";
 		HttpURLConn http = new HttpURLConn();
 		ImportEquipement im = new ImportEquipement();
-		System.out.println("Testing 1 - Send Http GET request");
+		//System.out.println("Testing 1 - Send Http GET request");
 		im.traitement_1(http.sendGet(url));
+		//System.out.println("Testing 1 - Send Http GET request");
 		String url2 = "http://data.iledefrance.fr/api/records/1.0/search/?dataset=les_salles_de_cinemas_en_ile-de-france&facet=dep&facet=adrcommune";
-		//im.traitement_2(http.sendGet(url2));
+		im.traitement_2(http.sendGet(url2));
 
 //		System.out.println("\nTesting 2 - Send Http POST request");
 //		http.sendPost();

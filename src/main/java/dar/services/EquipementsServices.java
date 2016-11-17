@@ -32,6 +32,7 @@ public class EquipementsServices {
 
 		url = "https://maps.googleapis.com/maps/api/distancematrix/json?origins=" + laltitude + "," + longitude
 				+ "&destinations=" + query + "&language=fr-FR&key=AIzaSyDkAuDP6CUy_2YfF24qmVB0fIC8o3-WYfQ";
+	
 		return traitement(http.sendGet(url), Equipements);
 
 	}
@@ -49,7 +50,7 @@ public class EquipementsServices {
 			//System.out.println("im heeereee");
 			JSONObject distance = (JSONObject) (((JSONObject) elements.getJSONObject(i)).get("distance"));
 			int value = (int) distance.get("value");
-			System.out.println(value);
+			//System.out.println(value);
 			if (value < 7000) {
 
 				JSONObject j = equipements.get(i).toJSON();
@@ -63,11 +64,11 @@ public class EquipementsServices {
 		return res;
 	}
 	
-//	public static void main(String[] args) throws Exception{
-//		
-//		JSONArray eqs = getNearby("48.845636","2.355060"); 
-//		 System.out.println(eqs.toString());
-//		
-//		
-//	}
+	public static void main(String[] args) throws Exception{
+		
+		JSONArray eqs = getNearby("48.845636","2.355060"); 
+		 System.out.println(eqs.toString());	
+		
+		
+	}
 }
