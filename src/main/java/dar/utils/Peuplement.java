@@ -16,7 +16,7 @@ public class Peuplement {
 	        stream.forEach(x -> {
 	        	String[] parts = x.split(";");
 	        	try {
-					AppartServices.addAppart(tmpUser, parts[0], new Double(parts[1]), new Integer(parts[3]), parts[4], new Boolean(parts[2]),75);
+					AppartServices.addAppart(tmpUser, parts[0], new Double(parts[1]), new Integer(parts[3]), parts[4], new Boolean(parts[2]),75,"");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

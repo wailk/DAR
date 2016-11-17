@@ -6,8 +6,12 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
+import java.net.URI;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Random;
+import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -24,8 +28,10 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import dar.core.Appartements;
+import dar.core.Photos;
 import dar.core.Users;
 import dar.dao.AppartementDao;
+import dar.dao.PhotoDao;
 import dar.services.AppartServices;
 import dar.tools.R;
 import dar.utils.HandleHibernate;
@@ -41,7 +47,7 @@ public class AptServlet extends HttpServlet {
 	public AptServlet() {
 		super();
 	}
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		response.setContentType("application/json");
@@ -87,7 +93,7 @@ public class AptServlet extends HttpServlet {
 		String login_user = (String) session.getAttribute("user");
 		Users tmpUser = dbProfilTools.getUser(login_user);
 		try {
-			
+
 			String adresse = request.getParameter(R.Apt.ADRESSE);
 			// String description=request.getParameter("desc");
 			// int arron=Integer.parseInt(request.getParameter("arron")) ;
@@ -96,11 +102,12 @@ public class AptServlet extends HttpServlet {
 			// save getPhoto
 			Part filePart = request.getPart(R.Apt.PHOTO);
 			String fileName = Paths.get(filePart.getSubmittedFileName()).getFileName().toString();
+			String chemin = "";
 			if (!"".equals(fileName)) {
 				InputStream fileContent = filePart.getInputStream();
-				savePhoto(fileContent, fileName);
+				chemin = savePhoto(fileContent, fileName);
 			}
-			
+
 			int superficie = new Integer(request.getParameter(R.Apt.SUPERFICIE));
 			String type = request.getParameter(R.Apt.TYPE);
 			String meuble = request.getParameter(R.Apt.MEUBLE);
@@ -109,7 +116,13 @@ public class AptServlet extends HttpServlet {
 			String chaine_loyer = request.getParameter(R.Apt.LOYER);
 			double loyer = Double.parseDouble(chaine_loyer);
 
-			AppartServices.addAppart(tmpUser, adresse, loyer, superficie, type, m, code_postal);
+			PhotoDao photoDao = new PhotoDao(HandleHibernate.getSF());
+			List<Photos> li = photoDao.getAll(Photos.class);
+			System.out.println("size ==>" + li.size());
+			AppartServices.addAppart(tmpUser, adresse, loyer, superficie, type, m, code_postal, chemin);
+
+			li = photoDao.getAll(Photos.class);
+			System.out.println("size ==>" + li.size());
 			// addAppart(Users user,String adresse,double loyer, int superficie,
 			// String type,boolean meuble,int cd)
 
@@ -138,8 +151,11 @@ public class AptServlet extends HttpServlet {
 		return;
 	}
 
-	private void savePhoto(InputStream is, String fileName) {
-		File file = new File(fileName);
+	private String savePhoto(InputStream is, String filename) {
+		Random r = new Random();
+		int uniqueID = r.nextInt(1000000);
+		String pathFile = "p_" + +uniqueID + filename;
+		File file = new File(pathFile);
 		System.out.println(file.getAbsolutePath());
 		FileOutputStream os;
 		try {
@@ -157,7 +173,10 @@ public class AptServlet extends HttpServlet {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return file.getAbsolutePath();
 
 	}
+
+
 
 }
