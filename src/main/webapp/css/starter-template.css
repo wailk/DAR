@@ -10,6 +10,7 @@ body {
 #navbar{
     border-bottom:1px solid #e2e2e2;
     padding-right: 10px;
+    background: white;
 }
 #navbar li a {
     border-left: 1px solid #e2e2e2;

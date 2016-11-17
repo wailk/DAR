@@ -1,0 +1,31 @@
+<nav id="navbar" class="navbar navbar-fixed-top navbar-light bg-faded">
+    <a class="navbar-brand" href="#"><img src="img/immogeo.png"></a>
+    <ul class="nav navbar-nav ">
+        <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+        </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right">
+    <% if(session.getAttribute("user") == null){ %>
+    	<li><a href="login.html">My Account / Register</a></li>
+    <% } else { %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><% out.print(session.getAttribute("user"));  %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">My Account</a></li>
+            <li><a href="#">Another action</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </li>
+     <% } %>
+     
+    </ul>
+</nav>

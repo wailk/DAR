@@ -33,6 +33,8 @@ private static final long serialVersionUID = 1L;
 		try {
 			String laltitude = request.getParameter("laltitude");
 			String longitude = request.getParameter("longitude");
+			
+			System.out.println("lat : "+laltitude + " , long: "+ longitude );
 
 			JSONArray arr = EquipementsServices.getNearby(laltitude, longitude);
 			response.getWriter().append(arr.toString());
