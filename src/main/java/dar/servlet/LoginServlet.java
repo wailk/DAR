@@ -39,7 +39,6 @@ public class LoginServlet extends HttpServlet {
 		
 		if(LoginForm.valideForm(request, response)){
 			String login = request.getParameter(R.Connexion.LOGIN);
-			String psw = request.getParameter(R.Connexion.PASS); 
 			System.out.println("Connexion de "+ login);
 			
 			HttpSession session= request.getSession() ;
@@ -50,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 			return ; 
 		}else{
 			
-			System.out.println("Invalid shit ! ");
+			System.out.println("Invalid ! ");
 			response.sendRedirect(PAGE_ERR_REDIRECT);
 		}
 		}catch(Exception e){

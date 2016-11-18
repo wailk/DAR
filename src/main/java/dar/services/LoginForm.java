@@ -16,27 +16,22 @@ public class LoginForm {
 		String pseudo = request.getParameter(R.Connexion.LOGIN); 
 		String pass=request.getParameter(R.Connexion.PASS) ;
 
-
-		Users newUser=null ;
 		FormTools form=new FormTools() ; 
 		try{
 			form.validationNom(pseudo);
 			form.validationNom(pass);
-			//r�cup�rer l'utilisateur de la base de donn�e
 			System.out.println("pseudo "+pseudo);
 			System.out.println("pass "+pass);
 			
-			newUser=dbProfilTools.getUser(pseudo,Cryptage.hashpw(pass)) ; 
-			System.out.println(" user "+newUser.toString() );
+			return dbProfilTools.existUser(pseudo,Cryptage.hashpw(pass)) ; 
+			//System.out.println(" user "+newUser.toString() );
 		}catch(Exception e){
 			request.setAttribute("erreurMsg",e.getMessage());
 			return false ; 
 		}
 
-		request.setAttribute("user", newUser.getEmail());
+		//request.setAttribute("user", newUser.getEmail());
 
-		
- 		return true;
 
 	}
 }

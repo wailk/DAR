@@ -19,6 +19,12 @@ public class dbProfilTools {
 		List<Users> list =  userDao.getFromQuery("from Users where mdp = "+"'"+ pass +"'"+" and email = " +"'"+pseudo +"'");
 	       return list.get(0);
 	}
+	public static boolean existUser(String pseudo,String pass){
+		SessionFactory sf = HandleHibernate.getSF();
+		UserDao userDao = new UserDao(sf);
+		List<Users> list =  userDao.getFromQuery("from Users where mdp = "+"'"+ pass +"'"+" and email = " +"'"+pseudo +"'");
+	       return list.size() != 0;
+	}
 	
 	public static Users getUser(String email){
 		SessionFactory sf = HandleHibernate.getSF();
