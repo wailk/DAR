@@ -43,9 +43,9 @@ public static void	updateFavoris(Favoris f){
 	public static void main(String[] args) throws JSONException, Exception{
 		//traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais 75007 paris");
 		//System.out.println( getAppartbyId(487).toString());
-		//traitementFavoris("david@gmail.com",1);
-		Favoris fav = getFavoris("david@gmail.com");
-		 System.out.println(getAppsFromFavoris(4));
+		traitementFavoris("david@gmail.com",6);
+		//Favoris fav = getFavoris("david@gmail.com");
+		// System.out.println(getAppsFromFavoris(4));
 		//System.out.println(fav.toJSON());
 	}
 
@@ -66,6 +66,7 @@ public static void	updateFavoris(Favoris f){
 	}
 //
 	public static List<Appartements> getAppsFromFavoris(int id){
+		List<Appartements> listappartements = new ArrayList<Appartements>();
 		Users user = dbProfilTools.getUser(id);
 		Favoris fav = user.getFavoris();
 		System.out.println("Renvoie de la liste de favoris " + id);
@@ -74,8 +75,10 @@ public static void	updateFavoris(Favoris f){
 		FavorisDao favdao= new FavorisDao(sf);
 		String query = "from Favoris where id_user ="+user.getId_user();
 		List<Favoris> favoris = favdao.getFromQuery(query);
+		if(favoris.isEmpty())
+				return listappartements;
 		List<Object> listapp = Arrays.asList(favoris.get(0).getAppartemens().toArray());
-		List<Appartements> listappartements = new ArrayList<Appartements>();
+		
 		for(Object x : listapp){
 			listappartements.add((Appartements)x);
 		}
