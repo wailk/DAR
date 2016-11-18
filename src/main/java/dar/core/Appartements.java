@@ -84,8 +84,8 @@ public class Appartements implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER,mappedBy = "id_appartement")
 	private Set<Photos> photos ;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	private Set<Favoris> favoris ;
+//	@ManyToMany(fetch = FetchType.EAGER)
+//	private Set<Favoris> favoris ;
 	
 	
 	public Set<Photos> getPhotos() {
