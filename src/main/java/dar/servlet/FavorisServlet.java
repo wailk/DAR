@@ -107,7 +107,7 @@ public class FavorisServlet extends HttpServlet {
 
 		try {
 
-			String login = (String) session.getAttribute(ATT_USER_SESSION);
+			String login = (String) session.getAttribute("user");
 			
 			
 			int id_appart = Integer.valueOf(request.getParameter("idapp"));
