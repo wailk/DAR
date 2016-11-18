@@ -80,9 +80,6 @@ public static void	updateFavoris(Favoris f){
 			listappartements.add((Appartements)x);
 		}
 		return listappartements;
-		
-		
-		
 	}
 	
 	public static Favoris getFavoris(String login) {
