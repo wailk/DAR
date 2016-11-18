@@ -48,7 +48,7 @@ public class Users implements Serializable {
 	@Expose
 	private Set<Appartements> appartements;
 	
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_favoris",referencedColumnName="id_favoris")
 	private Favoris favoris;
 

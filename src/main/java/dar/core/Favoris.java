@@ -32,7 +32,7 @@ public class Favoris {
 
 //	@ManyToOne
 //	@ForeignKey(name="appart_id")
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user",referencedColumnName="id_user")
 	private Users id_user;
 	

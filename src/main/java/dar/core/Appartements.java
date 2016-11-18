@@ -50,7 +50,7 @@ public class Appartements implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_appartement;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user",referencedColumnName="id_user")
 	private Users id_user;
 	
