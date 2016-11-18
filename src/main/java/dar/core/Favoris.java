@@ -30,8 +30,6 @@ public class Favoris {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id_favoris;
 
-//	@ManyToOne
-//	@ForeignKey(name="appart_id")
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "id_user",referencedColumnName="id_user")
 	private Users id_user;

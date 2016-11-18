@@ -43,9 +43,9 @@ public static void	updateFavoris(Favoris f){
 	public static void main(String[] args) throws JSONException, Exception{
 		//traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais 75007 paris");
 		//System.out.println( getAppartbyId(487).toString());
-		traitementFavoris("david@gmail.com",6);
+		//traitementFavoris("david@gmail.com",6);
 		//Favoris fav = getFavoris("david@gmail.com");
-		// System.out.println(getAppsFromFavoris(4));
+		  //System.out.println(getAppsFromFavoris(4).get(0).toJSON());
 		//System.out.println(fav.toJSON());
 	}
 

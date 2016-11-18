@@ -139,7 +139,7 @@ public class Users implements Serializable {
 	public String toString() {
 		return "Users [id_user=" + id_user + ", name=" + name + ", firstname=" + firstname + ", email=" + email
 				+ ", telephone=" + telephone + ", mdp=" + mdp + ", appartemens=" + 
-				(appartements == null ? "0" : appartements.size()) + "]";
+				(appartements == null ? "0" : getAppartements().size()) + "]";
 	}
 
 }

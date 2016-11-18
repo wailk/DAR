@@ -77,8 +77,8 @@ public class AppartServices {
 	public static void main(String[] args) throws JSONException, Exception {
 		// traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais
 		// 75007 paris");
-		// System.out.println( getAppartbyId(487).toString());
-//		List<Appartements> app = getByUserId(4);
+		 System.out.println( getAppartbyId(5).toJSON());
+		//List<Appartements> app = getByUserId(4);
 //		List<Appartements> apsp = getByUserId(1);
 //		JSONArray arr = new JSONArray();
 //		for (Appartements a : app)
