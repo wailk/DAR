@@ -21,7 +21,7 @@ public class ViewServices {
 
 		List<Appartements> appartements= AppartServices.getByUserId(id_user);
 		
-		String out = "";
+		String out = " ";
 		for(Appartements a : appartements)
 			out += "<li>"+ a.getAdresse()  +"</li>\n";
 		
@@ -32,7 +32,7 @@ public class ViewServices {
 		String login_user=(String) session.getAttribute("user") ;
 		int  id_user = dbProfilTools.getUser(login_user).getId_user(); 
 		
-		String out = "";
+		String out = " ";
 		for(Appartements a : FavorisServices.getAppsFromFavoris(id_user))
 			out += "<li>"+ a.getAdresse()  +"</li>\n";
 		

@@ -68,7 +68,7 @@
                     <div class="row">
                         <div id="apt_rooms" class="col-md-4">2 Chambres</div>
                         <div id="apt_area" class="col-md-4">65 m²</div>
-                        <div class="col-md-4"><button class="btn btn-primary" onclick="favoriteAppartment(selected_id)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></div>
+                        <div class="col-md-4"><button id="addFavorisButton" class="btn btn-primary"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></div>
                     </div>
 
                     <!-- Equipements -->

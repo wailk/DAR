@@ -59,7 +59,7 @@ var elements =
 
 
 function favoriteAppartment(id){
-    data = {idapp : id};
+    var data = {idapp : id};
     $.post("Favoris", function(data, status){
         console.log("favorited apt:" + id);
     });
@@ -69,4 +69,11 @@ function favoriteAppartment(id){
 $("#searchButton").on('click', function(){
 
 
+});
+
+$("#addFavorisButton").on('click', function(){
+    var data = {idapp : selected_id};
+    $.post("Favoris", function(data, status){
+        console.log("favorited apt:" + selected_id);
+    });
 });
