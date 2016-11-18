@@ -78,11 +78,12 @@ public class AppartServices {
 		// traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais
 		// 75007 paris");
 		// System.out.println( getAppartbyId(487).toString());
-		List<Appartements> app = getByUserId(1);
-		JSONArray arr = new JSONArray();
-		for (Appartements a : app)
-			arr.put(a.toJSON());
-		System.out.println(arr.toString());
+//		List<Appartements> app = getByUserId(4);
+//		List<Appartements> apsp = getByUserId(1);
+//		JSONArray arr = new JSONArray();
+//		for (Appartements a : app)
+//			arr.put(a.toJSON());
+//		System.out.println(arr.toString());
 	}
 
 	public static void suppAppart(int id) {

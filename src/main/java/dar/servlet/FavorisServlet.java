@@ -15,8 +15,6 @@ import org.json.JSONObject;
 import dar.core.Appartements;
 import dar.core.Favoris;
 import dar.core.Users;
-
-import dar.services.AppartServices;
 import dar.services.FavorisServices;
 
 import dar.utils.dbProfilTools;

@@ -45,13 +45,6 @@ public class Favoris {
 		this.id_user = id_user;
 	}
 
-	public Set<Appartements> getAppartements() {
-		return appartements;
-	}
-
-	public void setAppartements(Set<Appartements> appartements) {
-		this.appartements = appartements;
-	}
 
 
 	@ManyToMany(fetch = FetchType.EAGER)

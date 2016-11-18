@@ -24,6 +24,7 @@ public class HandleHibernate {
 				srb.applySettings(cf.getProperties());
 				sr = srb.build();
 				sf = cf.buildSessionFactory(sr);
+				//sf.openSession();
 			}
 
 		} catch (Throwable ex) {

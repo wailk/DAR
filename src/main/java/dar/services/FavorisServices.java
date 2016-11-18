@@ -1,5 +1,7 @@
 package dar.services;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,7 +44,8 @@ public static void	updateFavoris(Favoris f){
 		//traitementGoogleGeo(new Appartements(), "81 avenue de la bourdonnais 75007 paris");
 		//System.out.println( getAppartbyId(487).toString());
 		//traitementFavoris("david@gmail.com",1);
-		//Favoris fav = getFavoris("david@gmail.com");
+		Favoris fav = getFavoris("david@gmail.com");
+		 System.out.println(getAppsFromFavoris(4));
 		//System.out.println(fav.toJSON());
 	}
 
@@ -61,7 +64,27 @@ public static void	updateFavoris(Favoris f){
 		
 		
 	}
-
+//
+	public static List<Appartements> getAppsFromFavoris(int id){
+		Users user = dbProfilTools.getUser(id);
+		Favoris fav = user.getFavoris();
+		System.out.println("Renvoie de la liste de favoris " + id);
+	
+		SessionFactory	sf = HandleHibernate.getSF() ;
+		FavorisDao favdao= new FavorisDao(sf);
+		String query = "from Favoris where id_user ="+user.getId_user();
+		List<Favoris> favoris = favdao.getFromQuery(query);
+		List<Object> listapp = Arrays.asList(favoris.get(0).getAppartemens().toArray());
+		List<Appartements> listappartements = new ArrayList<Appartements>();
+		for(Object x : listapp){
+			listappartements.add((Appartements)x);
+		}
+		return listappartements;
+		
+		
+		
+	}
+	
 	public static Favoris getFavoris(String login) {
 		Users user = dbProfilTools.getUser(login);
 		Favoris fav = user.getFavoris();
