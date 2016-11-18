@@ -44,11 +44,11 @@ public class Users implements Serializable {
 	@Expose(serialize = false)
 	private String mdp;
 
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "id_user")
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "id_user")
 	@Expose
 	private Set<Appartements> appartements;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_favoris",referencedColumnName="id_favoris")
 	private Favoris favoris;
 
