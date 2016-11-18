@@ -37,7 +37,7 @@
                             <input type="text" class="form-control typeahead" id="inputCity" placeholder="ex. Paris" data-provide="typeahead">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Voir les annonces</button>
+                    <button id="searchButton" onsubmit="return false;" class="btn btn-primary">Voir les annonces</button>
                 </form>
             </div>
 
