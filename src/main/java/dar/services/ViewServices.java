@@ -30,15 +30,11 @@ public class ViewServices {
 	
 	public static String getFavorisBySession(HttpSession session){
 		String login_user=(String) session.getAttribute("user") ;
-		int  id_user = dbProfilTools.getUser(login_user).getId_user();  
-		SessionFactory	sf = HandleHibernate.getSF() ;
-		FavorisDao favdao= new FavorisDao(sf);
-
-		List<Favoris> favoris = favdao.getAll(Favoris.class);
+		int  id_user = dbProfilTools.getUser(login_user).getId_user(); 
 		
 		String out = "";
-		//for(Favoris f : favoris)
-			//out += "<li>"+   +"</li>\n";
+		for(Appartements a : FavorisServices.getAppsFromFavoris(id_user))
+			out += "<li>"+ a.getAdresse()  +"</li>\n";
 		
 		return out;
 	}
