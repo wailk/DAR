@@ -135,6 +135,9 @@ public class AptServlet extends HttpServlet {
 		}
 
 		try {
+			
+			response.sendRedirect("index.jsp");
+			
 			json.put("c", 0);
 			json.put("d", "ça marche");
 

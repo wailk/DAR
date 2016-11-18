@@ -19,10 +19,9 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><% out.print(session.getAttribute("user"));  %><span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">My Account</a></li>
-            <li><a href="#">Another action</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="account.jsp">My Account</a></li>
+            <li><a href="postApt.jsp">Ajouter</a></li>
+            <li><a href="Logout">Logout</a></li>
           </ul>
         </li>
      <% } %>

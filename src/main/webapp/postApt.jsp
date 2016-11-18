@@ -18,21 +18,7 @@
 </head>
 <body>
 
-	<nav id="navbar" class="navbar navbar-fixed-top navbar-light bg-faded">
-	<a class="navbar-brand" href="#"><img src="img/immogeo.png"></a>
-	<ul class="nav navbar-nav ">
-		<li class="nav-item active"><a class="nav-link" href="#">Home
-				<span class="sr-only">(current)</span>
-		</a></li>
-		<li class="nav-item"><a class="nav-link" href="#">About</a></li>
-		<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-	</ul>
-
-	<ul class="nav navbar-nav navbar-right">
-		<li><a href="#about">My Account</a></li>
-		<li><a href="#contact">Register</a></li>
-	</ul>
-	</nav>
+	<%@ include file="header.jspf" %>
 
 	<div class="container ">
 		<form action="apt" method="post" role="form" enctype="multipart/form-data" >
