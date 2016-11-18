@@ -23,7 +23,7 @@ public class Photos {
 
 //	@ManyToOne
 //	@ForeignKey(name="appart_id")
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "id_appartement",referencedColumnName="id_appartement")
 	private Appartements id_appartement;
 	@Column(name = "chemin", length = 100)
