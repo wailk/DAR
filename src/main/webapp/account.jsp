@@ -23,7 +23,7 @@
         <div id="myFavorites" class="col-md-6">
             <h4>My Favorites</h4>
             <ul>
-            
+            <%= ViewServices.getFavorisBySession(session) %>
             </ul>
         </div>
     </div>

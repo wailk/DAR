@@ -28,7 +28,7 @@
     <div class="row">
         <div id="map-container" class="col-md-8">
             <div id="toolbar" class="row">
-                <form class="form-inline">
+                <form class="form-inline" onsubmit="return false;">
                     <div class="form-group">
                         <div class="input-group">
                             <div class="input-group-addon">Loyer</div>
@@ -37,7 +37,7 @@
                             <input type="text" class="form-control typeahead" id="inputCity" placeholder="ex. Paris" data-provide="typeahead">
                         </div>
                     </div>
-                    <button id="searchButton" onsubmit="return false;" class="btn btn-primary">Voir les annonces</button>
+                    <button id="searchButton" class="btn btn-primary">Voir les annonces</button>
                 </form>
             </div>
 
@@ -68,12 +68,29 @@
                     <div class="row">
                         <div id="apt_rooms" class="col-md-4">2 Chambres</div>
                         <div id="apt_area" class="col-md-4">65 m²</div>
-                        <div class="col-md-4"><button onclick="favoriteAppartment(selected_id)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></div>
+                        <div class="col-md-4"><button class="btn btn-primary" onclick="favoriteAppartment(selected_id)"><span class="glyphicon glyphicon-star" aria-hidden="true"></span></button></div>
                     </div>
 
                     <!-- Equipements -->
                     <div class="row">
-                        <div class="col-md-12"><h4>Equipements</h4></div>
+                        <div class="col-md-12"><h4>Equipements</h4>
+                            <ul id="listeEq"></ul>
+                        </div>
+
+                    </div>
+                    <!-- Contact -->
+                    <div class="row">
+                    <div class="col-md-12">
+                    <h4>Contacter le bailleur</h4>
+                    <form class="form">
+                    	<textarea id="message" style="display: block; margin-bottom:10px; width: 100%; min-height: 100px">Bonjour,
+                    	
+J'aimerais prendre rendez-vous pour le visiter.
+
+Cordialement.</textarea>
+                    	<button class="btn btn-primary">Envoyer</button>
+                    </form>
+                    </div>
                     </div>
                 </div>
             </div>
