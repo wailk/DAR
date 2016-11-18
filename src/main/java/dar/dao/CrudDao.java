@@ -40,7 +40,9 @@ public class CrudDao<T> {
 
 	public List<T> getAll(Class clazz) {
 		Session session = sf.getCurrentSession();
+		Transaction tx = session.beginTransaction();
 		List<T> list = (List<T>) session.createQuery("from " + clazz.getName()).list();
+		tx.commit();
 		//session.close();
 		return list;
 	}
@@ -80,8 +82,9 @@ public class CrudDao<T> {
 		}
 	
 		q =  q + closeWhere.substring("and ".length());
-		
+		Transaction tx = session.beginTransaction();
 		List<T> list = (List<T>) session.createQuery(q).list();
+		tx.commit();
 		//session.close();
 		return list;
 	}
