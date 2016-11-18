@@ -52,10 +52,7 @@ public class UploadDownloadFileServlet extends HttpServlet {
 				System.out.println("ContentType=" + fileItem.getContentType());
 				System.out.println("Size in bytes=" + fileItem.getSize());
 
-				// ClassLoader classLoader = getClass().getClassLoader();
-				// String pathFile =
-				// classLoader.getResource(SAVE_DIR).toString() +
-				// fileItem.getName();
+				
 
 				String pathFile = request.getServletContext().getAttribute("FILES_DIR") + File.separator
 						+ fileItem.getName();

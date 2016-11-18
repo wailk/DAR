@@ -35,7 +35,7 @@
 	</nav>
 
 	<div class="container ">
-		<form action="apt" method="post" role="form"  >
+		<form action="apt" method="post" role="form" enctype="multipart/form-data" >
 			<fieldset class="form-group">
 				<legend>Appartement</legend>
 				<div class="form-group">
